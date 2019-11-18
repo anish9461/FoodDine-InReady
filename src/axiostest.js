@@ -5,9 +5,9 @@ import axios from 'axios';
 class InstructorApp extends Component {
 
     componentDidMount() {
-        axios.get(`https://jsonplaceholder.typicode.com/users`)
+        axios.get(`http://localhost:8080/cart`)
           .then(res => {
-            console.log(res)
+            console.log(res.data)
           })
       }
     render() {
