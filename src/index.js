@@ -4,14 +4,16 @@ import './index.css';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import Test from './axiostest';
-import Dashboard from './Dashboard';
+import Dashboard from './components/Dashboard';
 import * as serviceWorker from './serviceWorker';
-
+import bgimage from "./backgroundimages/restaurant-1.jpg"
 const routing = (
     <Router>
       <div>
-        <Route exact="/" component={Dashboard} />
+      
+        <Route exact={true} path="/" component={Dashboard} />
         <Route path="/restaurant" component={App} />
+        <Route path="/home" component={Dashboard} />
       </div>
     </Router>
   )

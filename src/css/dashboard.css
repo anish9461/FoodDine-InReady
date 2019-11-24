@@ -1,0 +1,29 @@
+.dashboard{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    height: auto;
+}
+
+.background{
+    /* display: block;
+    height: max-content; */
+    background-image: url('../backgroundimages/restaurant-1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: visible;
+    /* -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+}
+
+#bg {
+    position: fixed; 
+    /* top: 0; 
+    left: 0;  */
+  
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+  }
