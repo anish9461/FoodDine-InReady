@@ -8,7 +8,7 @@
 .background{
     /* display: block;
     height: max-content; */
-    background-image: url('../backgroundimages/restaurant-1.jpg') no-repeat center center fixed;
+    background-image: url('../images/restaurant-1.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100%;
     overflow: visible;

@@ -6,7 +6,8 @@ import App from './App';
 import Test from './axiostest';
 import Dashboard from './components/Dashboard';
 import * as serviceWorker from './serviceWorker';
-import bgimage from "./backgroundimages/restaurant-1.jpg"
+import bgimage from "./images/restaurant-1.jpg"
+import RestaurantMap from './components/RestaurantMap';
 const routing = (
     <Router>
       <div>
@@ -14,6 +15,7 @@ const routing = (
         <Route exact={true} path="/" component={Dashboard} />
         <Route path="/restaurant" component={App} />
         <Route path="/home" component={Dashboard} />
+        <Route path="/restaurant2d" component={RestaurantMap} />
       </div>
     </Router>
   )
