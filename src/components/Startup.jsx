@@ -38,7 +38,9 @@ class Startup extends Component {
     //     </div>
     //   );
     // }
-
+    onclick = () =>{
+      this.props.history.push('/home')
+    }
     render() {
       return (
         <div>
@@ -49,7 +51,7 @@ class Startup extends Component {
 <div className="bg-text">
   
   <h1 style={{fontSize: '50px'}}>FoodDine-InReady</h1>
-  <a onClick={this.onclick} href='home' className="button4" style={{backgroundColor:'#f14e4e', fontSize:'25px'}}>Click!</a>
+  <a onClick={this.onclick} className="button4" style={{backgroundColor:'#f14e4e', fontSize:'25px'}}>Click!</a>
 
 </div>
 </div>
