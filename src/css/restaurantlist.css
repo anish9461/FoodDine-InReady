@@ -1,0 +1,20 @@
+.restaurantlist{
+  resize: both;
+  overflow: auto;
+    position: relative;
+    width: 80vw;
+    height: 30vh;
+  border: 1px solid blue;
+  background-color: #232F34;
+  /* box-sizing: border-box; */
+  border-radius: 25px;
+  margin-left: 10%;
+  
+}
+
+.restaurantlist2{
+
+    position: absolute;
+    left: 10px;
+    color: #F9AA33;
+}

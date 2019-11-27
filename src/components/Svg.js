@@ -1,0 +1,1 @@
+exports.Table = require('../components/Table.jsx');

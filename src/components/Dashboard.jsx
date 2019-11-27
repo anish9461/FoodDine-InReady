@@ -4,7 +4,7 @@ import "../css/tab.css";
 import TabsComponent from "../components/TabsComponent";
 import "../css/dashboard.css";
 import MapComponent from "../components/Map";
-import bgimage from "../backgroundimages/restaurant-1.jpg";
+import bgimage from "../images/restaurant-1.jpg";
 
 
 class Dashboard extends Component {
@@ -23,12 +23,12 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
-        <img src={bgimage} id="bg" alt="" />
+      <div style={{backgroundColor: '#232F34', height: '100vh'}}>
+        {/* <img src={bgimage} id="bg" alt="" /> */}
         <TabsComponent history={this.props.history} />
 
         <div className="dashboard">
-          <MapComponent />
+          <MapComponent history={this.props.history}/>
         </div>
       </div>
     );
