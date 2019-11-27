@@ -23,8 +23,8 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
-        <img src={bgimage} id="bg" alt="" />
+      <div style={{backgroundColor: '#232F34', height: '100vh'}}>
+        {/* <img src={bgimage} id="bg" alt="" /> */}
         <TabsComponent history={this.props.history} />
 
         <div className="dashboard">

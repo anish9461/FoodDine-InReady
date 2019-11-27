@@ -3,17 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
+import RestaurantList from './components/RestaurantList';
 import Test from './axiostest';
 import Dashboard from './components/Dashboard';
 import * as serviceWorker from './serviceWorker';
 import bgimage from "./images/restaurant-1.jpg"
 import RestaurantMap from './components/RestaurantMap';
+import Startup from './components/Startup';
+
 const routing = (
     <Router>
       <div>
       
-        <Route exact={true} path="/" component={Dashboard} />
-        <Route path="/restaurant" component={App} />
+        <Route exact={true} path="/" component={Startup} />
+        <Route path="/restaurant" component={RestaurantList} />
         <Route path="/home" component={Dashboard} />
         <Route path="/restaurant2d" component={RestaurantMap} />
       </div>

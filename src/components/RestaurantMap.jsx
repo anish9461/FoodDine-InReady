@@ -22,14 +22,14 @@ class RestaurantMap extends Component {
 
   render() {
     return (
-      <div style={{ backgroundColor: "grey" }}>
+      <div style={{ backgroundColor: "#232F34"}}>
         <TabsComponent history={this.props.history} />
         {/* <img src={bgimage} id="bg" alt="" /> */}
         {/* <img src={resimg} id="RestaurantMap" alt="" /> */}
 
         {/* <img src={resimg} className="restaurantbg" alt="" /> */}
         <div style={{position: "relative"}} className="test">
-          <h2 id="hea">Restaurant 2D Map</h2>
+          <h2 style={{color: '#f05e0a'}}>Restaurant 2D Map</h2>
           <img src={resimg} width="50%" alt="" />
           
             <MapLegend x="550px" y="200px"/>
