@@ -13,19 +13,23 @@ class Dashboard extends Component {
     this.state = {
       center: [-0.1148677, 51.5139573]
     };
+    console.log("props")
+    console.log(this.props)
+    console.log("end")
   }
 
   componentDidMount() {
     // axios.get(`http://localhost:8080/cart`).then(res => {
     //   console.log(res.data);
     // });
+    
   }
 
   render() {
     return (
       <div style={{backgroundColor: '#232F34', height: '100vh'}}>
         {/* <img src={bgimage} id="bg" alt="" /> */}
-        <TabsComponent history={this.props.history} />
+        <TabsComponent history={this.props.history} islog={this.props.location.state.isLoggedIn} />
 
         <div className="dashboard">
           <MapComponent history={this.props.history}/>

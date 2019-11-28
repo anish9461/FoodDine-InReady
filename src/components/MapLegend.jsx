@@ -83,6 +83,10 @@ class MapLegend extends Component {
         //       state: this.state.sensor.rawSensor
         //     });
         //   }}
+        onClick={() => {
+          console.log('clicked')
+          this.props.history.push('/selectform')
+        }}
           style={{position: 'absolute',left: this.props.x, top: this.props.y }}
         >
             {console.log(this.props)}
