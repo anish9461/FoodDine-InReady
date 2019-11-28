@@ -56,7 +56,9 @@ class Startup extends Component {
     //     </div>
     //   );
     // }
-
+    onclick = () =>{
+      this.props.history.push('/home')
+    }
     render() {
       const responseGoogle = (response) =>{
         console.log(response)
