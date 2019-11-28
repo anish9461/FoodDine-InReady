@@ -37,25 +37,6 @@ class Startup extends Component {
   
     }
   
-    // render() {
-    //   return (
-    //     <div id='container'>
-    //       <img src={bgimage} id="b" alt=""  />
-          
-    //         {/* <CSSTransition
-    //         classNames='startup'
-    //         timeout={2000}
-    //         appear
-    //         >
-    //         <div className="centered">Centered</div>
-    //         </CSSTransition> */}
-            
-    //         <div className="centered">
-    //             sdffasf
-    //         </div>
-    //     </div>
-    //   );
-    // }
     onclick = () =>{
       this.props.history.push('/home')
     }

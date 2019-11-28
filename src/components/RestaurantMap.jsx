@@ -32,7 +32,7 @@ class RestaurantMap extends Component {
           <h2 style={{color: '#f05e0a'}}>Restaurant 2D Map</h2>
           <img src={resimg} width="50%" alt="" />
           
-            <MapLegend x="550px" y="200px"/>
+            <MapLegend history={this.props.history} x="550px" y="200px"/>
     
         </div>
 
