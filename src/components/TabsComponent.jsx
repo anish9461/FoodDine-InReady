@@ -3,20 +3,11 @@ import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import axios from "axios";
 import "../css/tab.css";
-import GoogleLogin from 'react-google-login';
 
 
 class TabsComponent extends Component {
   constructor(props) {
     super(props);
-    this.handleLoginClick = this.handleLoginClick.bind(this);
-    this.handleLogoutClick = this.handleLogoutClick.bind(this);
-    console.log("in tabs")
-    console.log(this.props.islog)
-
-    this.state = {
-      isLoggedIn: this.props.islog
-    };
   }
 
   componentDidMount() {
@@ -26,27 +17,20 @@ class TabsComponent extends Component {
     // });
   }
 
-  handleLoginClick() {
-    this.setState({ isLoggedIn: true });
-  }
-
-  handleLogoutClick() {
-    this.setState({ isLoggedIn: false });
-  }
-  clicked = tabs => {
-    console.log(this.props);
+  
+  clicked = (tabs) => {
+    if(tabs === ''){
+      sessionStorage.setItem('isLoggedIn','false')
+    }
    this.props.history.push("/" + tabs);
   };
 
   render() {
-    const responseGoogle = (response) =>{
-      console.log(response)
-    }
-    const isLoggedIn = this.state.isLoggedIn;
-    console.log(isLoggedIn);
-    let button;
 
-    if (isLoggedIn) {
+    let button;
+    console.log("session storage : ")
+    console.log(sessionStorage.getItem('isLoggedIn'))
+    if (sessionStorage.getItem('isLoggedIn')) {
       button = (
         <Tab
           eventKey=""
@@ -55,30 +39,9 @@ class TabsComponent extends Component {
           tabClassName="tab"
         ></Tab>
       );
-    } else {
-      button = (
-        // <Tab
-        //   eventKey="login"
-        //   title="Log In"
-        //   // onClick={this.handleLoginClick}
-        //   tabClassName="tab"
-        // >
-        //   <div style={{visibility: 'hidden'}}><GoogleLogin
-        //   style={{}}
-        // clientId="1040424542196-n7gajpjirdqcm10grpbk0kmvk8eav9ki.apps.googleusercontent.com"
-        // onSuccess={responseGoogle}
-        // onFailure={responseGoogle}
-        // />
-        // </div></Tab>
-<Tab tabClassName="tab">
-<GoogleLogin
-clientId="1040424542196-n7gajpjirdqcm10grpbk0kmvk8eav9ki.apps.googleusercontent.com"
-onSuccess={responseGoogle}
-onFailure={responseGoogle}
-/>
-</Tab>
-      );
-    }
+    } 
+      
+    
 
     return (
       <div className="tab-list">
