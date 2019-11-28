@@ -29,7 +29,7 @@ class Dashboard extends Component {
     return (
       <div style={{backgroundColor: '#232F34', height: '100vh'}}>
         {/* <img src={bgimage} id="bg" alt="" /> */}
-        <TabsComponent history={this.props.history} islog={this.props.location.state.isLoggedIn} />
+        <TabsComponent history={this.props.history} />
 
         <div className="dashboard">
           <MapComponent history={this.props.history}/>
