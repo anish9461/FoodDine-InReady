@@ -10,6 +10,7 @@ import * as serviceWorker from './serviceWorker';
 import bgimage from "./images/restaurant-1.jpg"
 import RestaurantMap from './components/RestaurantMap';
 import Startup from './components/Startup';
+import SelectForm from './components/forms/SelectForm';
 
 const routing = (
     <Router>
@@ -19,6 +20,7 @@ const routing = (
         <Route path="/restaurant" component={RestaurantList} />
         <Route path="/home" component={Dashboard} />
         <Route path="/restaurant2d" component={RestaurantMap} />
+        <Route path="/selectform" component={SelectForm}/>
       </div>
     </Router>
   )

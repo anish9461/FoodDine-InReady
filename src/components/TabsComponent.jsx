@@ -3,14 +3,19 @@ import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import axios from "axios";
 import "../css/tab.css";
+import GoogleLogin from 'react-google-login';
+
 
 class TabsComponent extends Component {
   constructor(props) {
     super(props);
     this.handleLoginClick = this.handleLoginClick.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
+    console.log("in tabs")
+    console.log(this.props.islog)
+
     this.state = {
-      isLoggedIn: false
+      isLoggedIn: this.props.islog
     };
   }
 
@@ -30,10 +35,13 @@ class TabsComponent extends Component {
   }
   clicked = tabs => {
     console.log(this.props);
-    this.props.history.push("/" + tabs);
+   this.props.history.push("/" + tabs);
   };
 
   render() {
+    const responseGoogle = (response) =>{
+      console.log(response)
+    }
     const isLoggedIn = this.state.isLoggedIn;
     console.log(isLoggedIn);
     let button;
@@ -41,7 +49,7 @@ class TabsComponent extends Component {
     if (isLoggedIn) {
       button = (
         <Tab
-          eventKey="logout"
+          eventKey=""
           title="Log Out"
           onClick={this.handleLogoutClick}
           tabClassName="tab"
@@ -49,12 +57,26 @@ class TabsComponent extends Component {
       );
     } else {
       button = (
-        <Tab
-          eventKey="login"
-          title="Log In"
-          onClick={this.handleLoginClick}
-          tabClassName="tab"
-        ></Tab>
+        // <Tab
+        //   eventKey="login"
+        //   title="Log In"
+        //   // onClick={this.handleLoginClick}
+        //   tabClassName="tab"
+        // >
+        //   <div style={{visibility: 'hidden'}}><GoogleLogin
+        //   style={{}}
+        // clientId="1040424542196-n7gajpjirdqcm10grpbk0kmvk8eav9ki.apps.googleusercontent.com"
+        // onSuccess={responseGoogle}
+        // onFailure={responseGoogle}
+        // />
+        // </div></Tab>
+<Tab tabClassName="tab">
+<GoogleLogin
+clientId="1040424542196-n7gajpjirdqcm10grpbk0kmvk8eav9ki.apps.googleusercontent.com"
+onSuccess={responseGoogle}
+onFailure={responseGoogle}
+/>
+</Tab>
       );
     }
 
