@@ -6,7 +6,6 @@ import "../css/dashboard.css";
 import bgimage from "../images/restaurant-1.jpg";
 import "../css/restaurantlist.css";
 import { height } from "dom-helpers";
-import {GetData} from '../services/GetData';
 
 class RestaurantList extends Component {
   constructor(props) {
