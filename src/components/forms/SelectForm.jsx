@@ -6,7 +6,7 @@ import TabsComponent from "../TabsComponent";
 import { Form, Input, FormGroup, Container, Label } from "reactstrap";
 import Checkbox from "rc-checkbox";
 import "rc-checkbox/assets/index.css";
-
+import ThankYou from "../ThankYou";
 
 class SelectForm extends Component {
   constructor(props) {
@@ -29,6 +29,8 @@ class SelectForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     console.log(this.state);
+    console.log(this.props.history)
+    this.props.history.push('/thankyou')
   };
 
   onOrderChange = e => {
