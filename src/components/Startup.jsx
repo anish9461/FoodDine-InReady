@@ -5,6 +5,7 @@ import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import "../css/background.css";
 import GoogleLogin from 'react-google-login'
 import axios from "axios";
+import {PostData} from "../services/PostData";
 
 class Startup extends Component {
     constructor(props) {
@@ -42,27 +43,36 @@ class Startup extends Component {
     }
     render() {
       const responseGoogle = (response) =>{
-        console.log(response)
+        // console.log(response)
         console.log("axios post")
-
-      axios({
-        method: 'POST',
-        url: 'http://fooddinein--ready.herokuapp.com/user',
-        // headers: {}, 
-        data: {
+        let userData = {
           'firstName' : response.w3.ofa,
           'lastName' : response.w3.wea,
           'email' : response.w3.U3
         } 
-      }).then(res => {
-        console.log("response")
+        PostData("user",userData)
+        // .then((result) => {
+        //   console.log("Response from service")
+        //   console.log(result)
+        // });
+      // axios({
+      //   method: 'POST',
+      //   url: 'http://fooddinein--ready.herokuapp.com/user',
+      //   // headers: {}, 
+      //   data: {
+      //     'firstName' : response.w3.ofa,
+      //     'lastName' : response.w3.wea,
+      //     'email' : response.w3.U3
+      //   } 
+      // }).then(res => {
+      //   console.log("response")
         
-        console.log(res)
-      }).catch(err => {
-        console.log("error")
-        console.log(err)
-      }
-        );
+      //   console.log(res)
+      // }).catch(err => {
+      //   console.log("error")
+      //   console.log(err)
+      // }
+      //   );
         // FIXME: Use session storage to store the user data
         sessionStorage.setItem('isLoggedIn','true')
         this.props.history.push('/home',{response : response, isLoggedIn: 'true'})

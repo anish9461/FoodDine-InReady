@@ -11,6 +11,7 @@ import bgimage from "./images/restaurant-1.jpg"
 import RestaurantMap from './components/RestaurantMap';
 import Startup from './components/Startup';
 import SelectForm from './components/forms/SelectForm';
+import ThankYou from './components/ThankYou';
 
 const routing = (
     <Router>
@@ -21,6 +22,7 @@ const routing = (
         <Route path="/home" component={Dashboard} />
         <Route path="/restaurant2d" component={RestaurantMap} />
         <Route path="/selectform" component={SelectForm}/>
+        <Route path="/thankyou" component={ThankYou}/>
       </div>
     </Router>
   )
