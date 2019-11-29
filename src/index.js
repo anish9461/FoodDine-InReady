@@ -11,16 +11,15 @@ import bgimage from "./images/restaurant-1.jpg"
 import RestaurantMap from './components/RestaurantMap';
 import Startup from './components/Startup';
 import SelectForm from './components/forms/SelectForm';
+import RestuarantEdit from './components/RestaurantManager/RestaurantEdit';
+import RestaurantOrders from './components/RestaurantManager/RestaurantOrders';
 
 const routing = (
     <Router>
       <div>
-      
         <Route exact={true} path="/" component={Startup} />
-        <Route path="/restaurant" component={RestaurantList} />
-        <Route path="/home" component={Dashboard} />
-        <Route path="/restaurant2d" component={RestaurantMap} />
-        <Route path="/selectform" component={SelectForm}/>
+        <Route path="/restaurantedit" component={RestuarantEdit} />
+        <Route path="/restaurantorders" component={RestaurantOrders} />
       </div>
     </Router>
   )
