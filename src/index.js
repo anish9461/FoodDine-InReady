@@ -12,6 +12,7 @@ import RestaurantMap from './components/RestaurantMap';
 import Startup from './components/Startup';
 import SelectForm from './components/forms/SelectForm';
 import ThankYou from './components/ThankYou';
+import Orders from './components/Orders'
 
 const routing = (
     <Router>
@@ -23,6 +24,7 @@ const routing = (
         <Route path="/restaurant2d" component={RestaurantMap} />
         <Route path="/selectform" component={SelectForm}/>
         <Route path="/thankyou" component={ThankYou}/>
+        <Route path="/orders" component={Orders}/>
       </div>
     </Router>
   )
