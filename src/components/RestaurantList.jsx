@@ -11,7 +11,9 @@ class RestaurantList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+      'firstName' : '',
+      'lastName' : '',
+      'email' : ''
     };
   }
 
@@ -28,11 +30,16 @@ componentWillMount(){
     // let response = GetData('user',userData)
     // console.log("response")
     // console.log(response.data)
-    this.getRestaurants();
+   // this.getRestaurants();
   }
   getRestaurants = async () => {
     let res = await axios.get("http://fooddinein--ready.herokuapp.com/user");
     let { data } = res.data;
+    this.setState(
+      {
+        'firstName': res.data[0].firstName
+      }
+    )
     console.log(res.data)
 };
   render() {
@@ -46,10 +53,10 @@ componentWillMount(){
           <div className="restaurantlist2">
             <h2 style={{ color: "#f05e0a" }}>Alto Cinco</h2>
             <h3 style={{ color: "#f05e0a", marginRight: "10px" }}>
-              Address :
+              Address : 
               <span style={{ color: "#F9AA33", marginLeft: "100px" }}>
                 
-                717 Downtown
+              {this.state.firstName}
               </span>
             </h3>
             <h3 style={{ color: "#f05e0a" }}>
