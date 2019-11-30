@@ -73,9 +73,9 @@ class Startup extends Component {
       //   console.log(err)
       // }
       //   );
-        // FIXME: Use session storage to store the user data
         sessionStorage.setItem('isLoggedIn','true')
-        this.props.history.push('/home',{response : response, isLoggedIn: 'true'})
+        sessionStorage.setItem('useremail',userData['email'])
+        this.props.history.push('/home',{response : response})
       }
       return (
         <div>

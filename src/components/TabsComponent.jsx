@@ -45,7 +45,7 @@ class TabsComponent extends Component {
             title="Restaurants"
             tabClassName="tab"
           ></Tab>
-          <Tab eventKey="about" title="About" disabled tabClassName="tab"></Tab>
+          <Tab eventKey="orders" title="Orders" tabClassName="tab"></Tab>
           {button}
         </Tabs>
       </div>
