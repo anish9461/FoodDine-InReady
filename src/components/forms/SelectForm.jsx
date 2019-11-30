@@ -30,7 +30,13 @@ class SelectForm extends Component {
     e.preventDefault();
     console.log(this.state);
     console.log(this.props.history)
-    this.props.history.push('/thankyou')
+    if (this.state.date === ''){
+      return
+    }
+    else{
+      this.props.history.push('/thankyou')
+    }
+    
   };
 
   onOrderChange = e => {
