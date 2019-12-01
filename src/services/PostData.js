@@ -21,7 +21,7 @@ import axios from "axios";
 import { resolve } from "dns";
 export function PostData(address, userData) {
     // console.log(userData.w3.ofa)
-    let url = 'http://fooddinein--ready.herokuapp.com/'+address;
+    let url = 'https://fooddinein--ready.herokuapp.com/'+address;
     console.log(userData)
     axios({
         method: 'POST',
