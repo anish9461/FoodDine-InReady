@@ -3,9 +3,7 @@ import axios from "axios";
 import "../css/tab.css";
 import TabsComponent from "../components/TabsComponent";
 import "../css/dashboard.css";
-import bgimage from "../images/restaurant-1.jpg";
 import "../css/restaurantlist.css";
-import { height } from "dom-helpers";
 
 class Orders extends Component {
   constructor(props) {
@@ -30,8 +28,7 @@ class Orders extends Component {
   }
   getOrders = async () => {
     var getReq = { 'useremail' : sessionStorage.getItem('useremail')}
-    let res = await axios.get("http://fooddinein--ready.herokuapp.com/orders");
-    let { data } = res.data;
+    let res = await axios.get("http://fooddinein--ready.herokuapp.com/orders",getReq);
     console.log(res.data);
   };
   render() {

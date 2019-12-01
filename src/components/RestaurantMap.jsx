@@ -20,6 +20,8 @@ class RestaurantMap extends Component {
     // });
   }
 
+
+
   render() {
     return (
       <div style={{ backgroundColor: "#232F34"}}>
@@ -31,7 +33,15 @@ class RestaurantMap extends Component {
         <div style={{position: "relative"}} className="test">
           <h2 style={{color: '#f05e0a'}}>Restaurant 2D Map</h2>
           <img src={resimg} width="50%" alt="" />
-          
+          {/* {console.log(this.props)}
+          {this.props.restuarant.map(res => {
+            {console.log(this.props.res)}
+            // return(
+             
+            //   <MapLegend history={this.props.history} x="550px" y="200px"/>
+              
+            // )
+          })} */}{console.log('times')}
             <MapLegend history={this.props.history} x="550px" y="200px"/>
     
         </div>
