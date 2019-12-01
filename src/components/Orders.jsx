@@ -29,10 +29,10 @@ class Orders extends Component {
     this.getOrders();
   }
   getOrders = async () => {
-    var getReq = { 'useremail' : sessionStorage.getItem('useremail')}
-    let res = await axios.get("http://fooddinein--ready.herokuapp.com/orders");
-    let { data } = res.data;
-    console.log(res.data);
+    // var getReq = { 'useremail' : sessionStorage.getItem('useremail')}
+    // let res = await axios.get("http://fooddinein--ready.herokuapp.com/orders");
+    // let { data } = res.data;
+    // console.log(res.data);
   };
   render() {
     return (
