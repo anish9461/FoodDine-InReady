@@ -4,7 +4,6 @@ import bgimage from "../images/restaurant-1.jpg";
 import "../css/background.css";
 import axios from "axios";
 import ReactTimeout from 'react-timeout'
-import { tsModuleBlock } from "../../../../../../../../AppData/Local/Microsoft/TypeScript/3.6/node_modules/@babel/types/lib";
 import Spinner from 'react-spinner-material';
 
 class ThankYou extends Component {
