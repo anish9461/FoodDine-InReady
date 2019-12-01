@@ -8,6 +8,9 @@ import Checkbox from "rc-checkbox";
 import "rc-checkbox/assets/index.css";
 import ThankYou from "../ThankYou";
 import {PostData} from "../../services/PostData";
+import setHours from 'date-fns/setHours'
+import setMinutes from 'date-fns/setMinutes'
+import { array } from "prop-types";
 
 class SelectForm extends Component {
   constructor(props) {
@@ -75,7 +78,9 @@ class SelectForm extends Component {
   }
 
   onCheckChange(e) {
-    console.log(document.getElementById('datepicker'))
+    // this.refs.datepicker.props.showTimeSelect = 'false'
+    // this.refs.datepicker.props.includeTimes.push(setHours(setMinutes(new Date(), 0), 15))
+    console.log(this.refs.datepicker.props.includeTimes)
     if (document.getElementById(e.target.name).checked) {
       this.setState({ parkingSlot: e.target.name });
       this.state.parkingSlots.map(slot => {
@@ -94,7 +99,17 @@ class SelectForm extends Component {
   }
   componentDidMount() {
     console.log("component mount");
-    
+    this.refs.datepicker.props.includeTimes.push(setHours(setMinutes(new Date(), 0), 15))
+    //FIXME: If props.datetime === preincluded times, then remove it from preinclude time
+    // for(i in datetime array)
+    // {
+    //   for(j in includetime array)
+    //   {
+    //     if datetime === includetime{
+    //       remove datetime from includetime
+    //     }
+    //   }
+    // }  
   }
 
   state = {
@@ -135,14 +150,14 @@ class SelectForm extends Component {
                 onChange={this.handleChange}
                 showTimeSelect
                 minDate={new Date()}
-                // timeFormat="HH:mm"
+                timeFormat="HH:mm"
                 timeIntervals={60}
                 // includeTimes={[(this.state.startDate,20),(this.state.startDate,18),(0,19),(0,20)]}
-                includeTimes={[
-                  // setHours(setMinutes(new Date(), 0), 17),
-                  // setHours(setMinutes(new Date(), 30), 18)
-                  // // setHours(setMinutes(new Date(), 30), 19),
-                  // // setHours(setMinutes(new Date(), 30), 17)
+                includeTimes={[                
+                  setHours(setMinutes(new Date(), 0), 18),
+                  setHours(setMinutes(new Date(), 0), 19),
+                  setHours(setMinutes(new Date(), 0), 20),
+                  setHours(setMinutes(new Date(), 0), 21)
                 ]}
                 // timeCaption="time"
                 dateFormat="MMMM d, yyyy h:mm aa"
