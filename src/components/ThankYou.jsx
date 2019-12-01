@@ -23,9 +23,10 @@ class ThankYou extends Component {
     onclick = () =>{
       this.props.history.push('/')
     sessionStorage.clear();
-      //TODO: clear the session storage
     }
-    render() {          
+    render() {    
+      if(sessionStorage.getItem('isLoggedIn') === 'true')
+    {      
       return (
         <div>
         <div className="bg-image">
@@ -43,6 +44,10 @@ class ThankYou extends Component {
 </div>
 </div>
       );
+    }
+    else{
+      return null
+    }
     }
   }
   

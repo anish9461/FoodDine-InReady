@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ReactMapboxGl, { Layer, Feature, Marker } from "react-mapbox-gl";
+import ReactMapboxGl, { Marker } from "react-mapbox-gl";
 import mapmarker from "../marker.svg";
-
+import axios from "axios";
 
 const Map = ReactMapboxGl({
   accessToken:
@@ -23,12 +23,31 @@ class MapComponent extends Component {
     // });
   }
 
-markerClick() {
-  console.log('Clicked');
+  componentWillMount(){
+    this.getRestaurants();
+    console.log("component will mount")
+  }
+
+markerClick(e) {
+  //FIXME: send the restaurant information to the 2D map as props
+  // console.log('Clicked');
+  // console.log(e)
+  // ////
+  // var restaurant = this.state.data.filter(res => res.restaurantName === e.target.data) 
+  // this.props.history.push('/restaurant2d',restaurant);
   this.props.history.push('/restaurant2d');
 }
-  
+getRestaurants = async () => {
+  let res = await axios.get("http://fooddinein--ready.herokuapp.com/restaurant");
+  this.setState(
+    {
+      'data' : res.data
+    }
+  )
+};
+
   render() {
+    if(this.state.data){
     return (
       <Map
         center={[-76.1474, 43.0481]}
@@ -39,14 +58,25 @@ markerClick() {
           alignContent: "centre"
         }}
       >
-        {/* <Layer type="symbol" id="marker" layout={{ 'icon-image': 'harbor-15' }}>
-    <Feature coordinates={[-0.1148677, 51.5139573]} />
-  </Layer> */}
-        <Marker style={{cursor : 'pointer'}} coordinates={[-76.1474, 43.0481]} anchor="bottom" onClick={this.markerClick}>
+        {console.log(this.state.data)}
+        {/* FIXME: map the markers on the map */}
+        {this.state.data.map(data => {
+          console.log(data)
+        return(
+          <Marker id={data['name']} style={{cursor : 'pointer'}} coordinates={[data['locationX'], data['locationY']]} anchor="bottom" onClick={this.markerClick}>
           <img src={mapmarker} height="40" width="40" alt="" />
         </Marker>
+        )
+        })}
+        {/* <Marker style={{cursor : 'pointer'}} coordinates={[-76.1474, 43.0481]} anchor="bottom" onClick={this.markerClick}>
+          <img src={mapmarker} height="40" width="40" alt="" />
+        </Marker> */}
       </Map>
     );
+      }
+      else{
+        return null
+      }
   }
 }
 

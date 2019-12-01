@@ -7,6 +7,10 @@ import { Form, Input, FormGroup, Container, Label } from "reactstrap";
 import Checkbox from "rc-checkbox";
 import "rc-checkbox/assets/index.css";
 import ThankYou from "../ThankYou";
+import {PostData} from "../../services/PostData";
+import setHours from 'date-fns/setHours'
+import setMinutes from 'date-fns/setMinutes'
+import { array } from "prop-types";
 
 class SelectForm extends Component {
   constructor(props) {
@@ -30,8 +34,25 @@ class SelectForm extends Component {
     e.preventDefault();
     console.log(this.state);
     console.log(this.props.history)
-    this.props.history.push('/thankyou')
+    if (this.state.date === ''){
+      return
+    }
+    else{
+      //#FIXME : post request to the restaurant and user collection
+      //with data
+      // var sentData = {
+      //   'date' : this.state.date,
+      //   'parkingSlot' : this.state.parkingSlot,
+      //   'preorder' : this.state.preorder
+      // }
+      // PostData("restaurant",sentData)
+      // PostData("user",sentData)
+      this.props.history.push('/thankyou')
+    }
+    
   };
+
+
 
   onOrderChange = e => {
     if (document.getElementById(e.target.name).checked) {
@@ -57,6 +78,9 @@ class SelectForm extends Component {
   }
 
   onCheckChange(e) {
+    // this.refs.datepicker.props.showTimeSelect = 'false'
+    // this.refs.datepicker.props.includeTimes.push(setHours(setMinutes(new Date(), 0), 15))
+    console.log(this.refs.datepicker.props.includeTimes)
     if (document.getElementById(e.target.name).checked) {
       this.setState({ parkingSlot: e.target.name });
       this.state.parkingSlots.map(slot => {
@@ -75,6 +99,17 @@ class SelectForm extends Component {
   }
   componentDidMount() {
     console.log("component mount");
+    this.refs.datepicker.props.includeTimes.push(setHours(setMinutes(new Date(), 0), 15))
+    //FIXME: If props.datetime === preincluded times, then remove it from preinclude time
+    // for(i in datetime array)
+    // {
+    //   for(j in includetime array)
+    //   {
+    //     if datetime === includetime{
+    //       remove datetime from includetime
+    //     }
+    //   }
+    // }  
   }
 
   state = {
@@ -93,8 +128,14 @@ class SelectForm extends Component {
       date: date
     });
   };
+  // getDate = () => {
+  //   const [startDate, setStartDate] = useState(
+  //     setHours(setMinutes(new Date(), 30), 16)
+  //   );
 
   render() {
+    if(sessionStorage.getItem('isLoggedIn') === 'true')
+    {
     return (
       <div style={{ backgroundColor: "#344955", height: "100vh" }}>
         <TabsComponent history={this.props.history} />
@@ -106,13 +147,21 @@ class SelectForm extends Component {
           <div className="form-align">
             <div>
               <DatePicker
+                ref = 'datepicker'
                 selected={this.state.startDate}
                 onChange={this.handleChange}
                 showTimeSelect
                 minDate={new Date()}
                 timeFormat="HH:mm"
                 timeIntervals={60}
-                timeCaption="time"
+                // includeTimes={[(this.state.startDate,20),(this.state.startDate,18),(0,19),(0,20)]}
+                includeTimes={[                
+                  setHours(setMinutes(new Date(), 0), 18),
+                  setHours(setMinutes(new Date(), 0), 19),
+                  setHours(setMinutes(new Date(), 0), 20),
+                  setHours(setMinutes(new Date(), 0), 21)
+                ]}
+                // timeCaption="time"
                 dateFormat="MMMM d, yyyy h:mm aa"
               />
             </div>
@@ -162,6 +211,10 @@ class SelectForm extends Component {
         </Form>
       </div>
     );
+                }
+                else{
+                  return null
+                }
   }
 }
 

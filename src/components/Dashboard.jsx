@@ -4,7 +4,7 @@ import "../css/tab.css";
 import TabsComponent from "../components/TabsComponent";
 import "../css/dashboard.css";
 import MapComponent from "../components/Map";
-import bgimage from "../images/restaurant-1.jpg";
+
 
 
 class Dashboard extends Component {
@@ -25,7 +25,21 @@ class Dashboard extends Component {
     
   }
 
+  componentWillMount(){
+    // this.getRestaurants();
+    console.log("component will mount")
+  }
+
+  // getRestaurants = async () => {
+  //   let res = await axios.get("http://fooddinein--ready.herokuapp.com/restaurants");
+  //   let { data } = res.data;
+  //   console.log(res.data)
+  // }
+  
   render() {
+    console.log(sessionStorage.getItem('isLoggedIn'))
+    if(sessionStorage.getItem('isLoggedIn') === 'true')
+    {
     return (
       <div style={{backgroundColor: '#232F34', height: '100vh'}}>
         {/* <img src={bgimage} id="bg" alt="" /> */}
@@ -36,6 +50,10 @@ class Dashboard extends Component {
         </div>
       </div>
     );
+    }
+    else{
+      return null
+    }
   }
 }
 
