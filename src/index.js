@@ -17,7 +17,6 @@ import Orders from './components/Orders'
 const routing = (
     <Router>
       <div>
-      
         <Route exact={true} path="/" component={Startup} />
         <Route path="/restaurant" component={RestaurantList} />
         <Route path="/home" component={Dashboard} />
