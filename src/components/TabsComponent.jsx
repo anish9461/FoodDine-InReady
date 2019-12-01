@@ -39,13 +39,12 @@ class TabsComponent extends Component {
     return (
       <div className="tab-list">
         <Tabs activeKey={this.props.activeKey} onSelect={this.clicked}>
-          <Tab eventKey="home" title="Home" tabClassName="tab"></Tab>
           <Tab
             eventKey="restaurant"
-            title="Restaurants"
+            title="Restaurants Form"
             tabClassName="tab"
           ></Tab>
-          <Tab eventKey="about" title="About" disabled tabClassName="tab"></Tab>
+          <Tab eventKey="restaurantorders" title="Restaurant Orders" disabled tabClassName="tab"></Tab>
           {button}
         </Tabs>
       </div>
