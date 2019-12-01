@@ -32,6 +32,8 @@ class Orders extends Component {
     console.log(res.data);
   };
   render() {
+    if(sessionStorage.getItem('isLoggedIn') === 'true')
+    {
     return (
       <div style={{ backgroundColor: "#344955", height: "100vh" }}>
         {console.log("Loding")}
@@ -67,6 +69,10 @@ class Orders extends Component {
         </div>
       </div>
     );
+    }
+    else{
+      return null
+    }
   }
 }
 

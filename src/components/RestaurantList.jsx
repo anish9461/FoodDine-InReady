@@ -29,7 +29,7 @@ componentWillMount(){
    // this.getRestaurants();
   }
   getRestaurants = async () => {
-    let res = await axios.get("http://fooddinein--ready.herokuapp.com/restaurants");
+    let res = await axios.get("http://fooddinein--ready.herokuapp.com/restaurant");
     this.setState(
       {
         'data' : res.data
@@ -37,10 +37,12 @@ componentWillMount(){
     )
 };
   render() {
+    if(sessionStorage.getItem('isLoggedIn') === 'true')
+    {
     return (
       
-      <div style={{ backgroundColor: "#344955", height: "100%" }}>
-        {console.log('Loding')}
+      <div style={{ backgroundColor: "#344955", height: "100vh" }}>
+        {console.log(this.state.data)}
         {/* <img src={bgimage} id="bg" alt="" /> */}
         <TabsComponent history={this.props.history} activeKey="restaurant"/>
 
@@ -48,22 +50,22 @@ componentWillMount(){
         {this.state.data.map(data => {
           return (
           <div className="restaurantlist">
-          <div className="restaurantlist2">
-            <h2 style={{ color: "#f05e0a" }}>{data['restaurantName']}</h2>
+          <div className="restaurantlist2" style={{height: '100%'}}>
+            <h2 style={{ color: "#f05e0a" }}>{data['name']}</h2>
             <h3 style={{ color: "#f05e0a", marginRight: "10px" }}>
               Address : 
               <span style={{ color: "#F9AA33", marginLeft: "100px" }}>
                 
-              {data['address']}
+              {data['resAddress']}
               </span>
             </h3>
             <h3 style={{ color: "#f05e0a" }}>
               Restaurant Timings : 
-              <span style={{ color: "#F9AA33" }}> {data['restaurantTiming']}</span>
+              <span style={{ color: "#F9AA33" }}> {data['resTiming']}</span>
             </h3>
             <h3 style={{ color: "#f05e0a"}}>
               Contact : 
-              <span style={{ color: "#F9AA33", marginLeft: "100px" }}> {data['Contact']}</span>
+              <span style={{ color: "#F9AA33", marginLeft: "100px" }}> {data['contact']}</span>
             </h3>
           </div>
         </div>
@@ -91,6 +93,10 @@ componentWillMount(){
         </div> */}
       </div>
     );
+      }
+      else{
+        return null
+      }
   }
 }
 

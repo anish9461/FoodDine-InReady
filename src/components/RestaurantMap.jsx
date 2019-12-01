@@ -23,6 +23,8 @@ class RestaurantMap extends Component {
 
 
   render() {
+    if(sessionStorage.getItem('isLoggedIn') === 'true')
+    {
     return (
       <div style={{ backgroundColor: "#232F34"}}>
         <TabsComponent history={this.props.history} />
@@ -49,6 +51,10 @@ class RestaurantMap extends Component {
         {/* <div class="button_cont" align="center"><a class="example_b" href="add-website-here" target="_blank" rel="nofollow noopener">Add Call to Action</a></div> */}
       </div>
     );
+        }
+        else{
+          return null
+        }
   }
 }
 

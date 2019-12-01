@@ -134,6 +134,8 @@ class SelectForm extends Component {
   //   );
 
   render() {
+    if(sessionStorage.getItem('isLoggedIn') === 'true')
+    {
     return (
       <div style={{ backgroundColor: "#344955", height: "100vh" }}>
         <TabsComponent history={this.props.history} />
@@ -209,6 +211,10 @@ class SelectForm extends Component {
         </Form>
       </div>
     );
+                }
+                else{
+                  return null
+                }
   }
 }
 

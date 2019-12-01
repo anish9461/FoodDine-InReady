@@ -38,7 +38,7 @@ markerClick(e) {
   this.props.history.push('/restaurant2d');
 }
 getRestaurants = async () => {
-  let res = await axios.get("http://fooddinein--ready.herokuapp.com/user");
+  let res = await axios.get("http://fooddinein--ready.herokuapp.com/restaurant");
   this.setState(
     {
       'data' : res.data
@@ -47,6 +47,7 @@ getRestaurants = async () => {
 };
 
   render() {
+    if(this.state.data){
     return (
       <Map
         center={[-76.1474, 43.0481]}
@@ -57,18 +58,25 @@ getRestaurants = async () => {
           alignContent: "centre"
         }}
       >
-        FIXME: map the markers on the map
-        {/* {this.state.data.map(data => {
+        {console.log(this.state.data)}
+        {/* FIXME: map the markers on the map */}
+        {this.state.data.map(data => {
+          console.log(data)
         return(
-          <Marker id={data['restaurantName']} style={{cursor : 'pointer'}} coordinates={[-76.1474, 43.0481]} anchor="bottom" onClick={this.markerClick}>
+          <Marker id={data['name']} style={{cursor : 'pointer'}} coordinates={[data['locationX'], data['locationY']]} anchor="bottom" onClick={this.markerClick}>
           <img src={mapmarker} height="40" width="40" alt="" />
         </Marker>
-        )})} */}
-        <Marker style={{cursor : 'pointer'}} coordinates={[-76.1474, 43.0481]} anchor="bottom" onClick={this.markerClick}>
+        )
+        })}
+        {/* <Marker style={{cursor : 'pointer'}} coordinates={[-76.1474, 43.0481]} anchor="bottom" onClick={this.markerClick}>
           <img src={mapmarker} height="40" width="40" alt="" />
-        </Marker>
+        </Marker> */}
       </Map>
     );
+      }
+      else{
+        return null
+      }
   }
 }
 
