@@ -71,6 +71,15 @@ class Restaurantorder extends Component {
                 List of Orders
               </span>
             </h3>
+            <div className="form-align" style={{ marginTop: "10px" }}>
+            <button
+                  type="submit"
+                  className="button"
+                  onClick={this.handleSubmit}
+                >
+                  Confirm
+                </button>
+                </div>
           </div>
         </div>
       </div>
