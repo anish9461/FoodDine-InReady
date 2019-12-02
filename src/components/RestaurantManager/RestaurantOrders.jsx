@@ -8,7 +8,7 @@ import "../../css/restaurantlist.css";
 class Restaurantorder extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { data : []};
   }
 
   componentWillMount() {
@@ -30,14 +30,23 @@ class Restaurantorder extends Component {
     var getReq = { 'useremail' : sessionStorage.getItem('useremail')}
     let res = await axios.get("http://fooddinein--ready.herokuapp.com/orders");
     let { data } = res.data;
-    console.log(res.data);
+    this.setState({
+      data : res.data
+    })
+    // console.log(res.data);
   };
   render() {
+    {console.log((sessionStorage.getItem('isLoggedIn')))}
+    if((sessionStorage.getItem('isLoggedIn') === 'true') && this.state.data)
+    {
+      
     return (
       <div style={{ backgroundColor: "#344955", height: "100vh" }}>
-        {console.log("Loding")}
+        
+        {console.log(this.state.data)}
         {/* <img src={bgimage} id="bg" alt="" /> */}
         <TabsComponent history={this.props.history} activeKey="restaurantorders" />
+        
         {/* FIXME: Use map and state to display all the orders */}
         <div className="restaurantlist">
           <div className="restaurantlist2">
@@ -84,6 +93,10 @@ class Restaurantorder extends Component {
         </div>
       </div>
     );
+    }
+    else{
+      return null
+    }
   }
 }
 
