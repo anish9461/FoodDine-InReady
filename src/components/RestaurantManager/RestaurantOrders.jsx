@@ -26,6 +26,13 @@ class Restaurantorder extends Component {
     // console.log(response.data)
     this.getOrders();
   }
+
+  handleSubmit(e){
+    console.log(e.target)
+  }
+
+
+
   getOrders = async () => {
     var getReq = { 'useremail' : sessionStorage.getItem('useremail')}
     let res = await axios.get("http://fooddinein--ready.herokuapp.com/orders");
@@ -83,8 +90,10 @@ class Restaurantorder extends Component {
             <div className="form-align" style={{ marginTop: "10px" }}>
             <button
                   type="submit"
+                  id='abc'
                   className="button"
                   onClick={this.handleSubmit}
+                  style={{color: 'white'}}
                 >
                   Confirm
                 </button>
