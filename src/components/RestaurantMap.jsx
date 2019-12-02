@@ -12,6 +12,9 @@ import MapLegend from "../components/MapLegend";
 class RestaurantMap extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      data : []
+    }
   }
 
   componentDidMount() {
@@ -20,8 +23,20 @@ class RestaurantMap extends Component {
     // });
   }
 
+componentWillMount(){
+  console.log(this.props.history.location.state)
+  //axios get to get tables
+  //this.getTable();
+}
 
-
+getTable = async () => {
+  let res = await axios.get("http://fooddinein--ready.herokuapp.com/restaurant/tables");
+  this.setState(
+    {
+      'data' : res.data
+    }
+  )
+};
   render() {
     if(sessionStorage.getItem('isLoggedIn') === 'true')
     {
@@ -35,15 +50,15 @@ class RestaurantMap extends Component {
         <div style={{position: "relative"}} className="test">
           <h2 style={{color: '#f05e0a'}}>Restaurant 2D Map</h2>
           <img src={resimg} width="50%" alt="" />
-          {/* {console.log(this.props)}
-          {this.props.restuarant.map(res => {
+          {/* {console.log(this.props.history.location)} */}
+          {/* {this.props.restuarant.map(res => {
             {console.log(this.props.res)}
             // return(
              
             //   <MapLegend history={this.props.history} x="550px" y="200px"/>
               
             // )
-          })} */}{console.log('times')}
+          })} */}
             <MapLegend history={this.props.history} x="550px" y="200px"/>
     
         </div>

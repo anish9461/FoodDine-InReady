@@ -29,13 +29,14 @@ class MapComponent extends Component {
   }
 
 markerClick(e) {
-  //FIXME: send the restaurant information to the 2D map as props
-  // console.log('Clicked');
-  // console.log(e)
-  // ////
-  // var restaurant = this.state.data.filter(res => res.restaurantName === e.target.data) 
-  // this.props.history.push('/restaurant2d',restaurant);
-  this.props.history.push('/restaurant2d');
+  // send the restaurant information to the 2D map as props
+  console.log('Clicked');
+  console.log(e.target.id)
+  ////
+  var restaurant = this.state.data.filter(res => res.name === e.target.id) 
+  console.log(restaurant[0])
+  this.props.history.push('/restaurant2d',restaurant[0]);
+  // this.props.history.push('/restaurant2d');
 }
 getRestaurants = async () => {
   let res = await axios.get("https://fooddinein--ready.herokuapp.com/restaurant");
@@ -59,12 +60,11 @@ getRestaurants = async () => {
         }}
       >
         {console.log(this.state.data)}
-        {/* FIXME: map the markers on the map */}
+        {/* : map the markers on the map */}
         {this.state.data.map(data => {
-          console.log(data)
         return(
-          <Marker id={data['name']} style={{cursor : 'pointer'}} coordinates={[data['locationX'], data['locationY']]} anchor="bottom" onClick={this.markerClick}>
-          <img src={mapmarker} height="40" width="40" alt="" />
+          <Marker style={{cursor : 'pointer'}} coordinates={[data['locationX'], data['locationY']]} anchor="bottom" onClick={this.markerClick}>
+          <img id={data['name']} src={mapmarker} height="40" width="40" alt=""  />
         </Marker>
         )
         })}
