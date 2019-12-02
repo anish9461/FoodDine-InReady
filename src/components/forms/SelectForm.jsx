@@ -32,6 +32,9 @@ class SelectForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    // const templateId = 'template_UOMxgYMC';
+    // var message = 'Booking Date : \n' + this.state.date + '\n' + "Preorder";
+    // this.sendFeedback(templateId, {message_html: message, from_name: 'FoodDine-InReady', reply_to: 'anish9461@gmail.com'})
     console.log(this.state);
     console.log(this.props.history)
     if (this.state.date === ''){
@@ -52,7 +55,16 @@ class SelectForm extends Component {
     
   };
 
-
+  sendFeedback (templateId, variables) {
+    window.emailjs.send(
+      'gmail', templateId,
+      variables
+      ).then(res => {
+        console.log('Email successfully sent!')
+      })
+      // Handle errors here however you like, or use a React error boundary
+      .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
+    }
 
   onOrderChange = e => {
     if (document.getElementById(e.target.name).checked) {
