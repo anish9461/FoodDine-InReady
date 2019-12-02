@@ -28,7 +28,7 @@ class Orders extends Component {
   }
   getOrders = async () => {
     var getReq = { 'useremail' : sessionStorage.getItem('useremail')}
-    let res = await axios.get("http://fooddinein--ready.herokuapp.com/orders",getReq);
+    let res = await axios.get("https://fooddinein--ready.herokuapp.com/orders",getReq);
     console.log(res.data);
   };
   render() {
