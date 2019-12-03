@@ -24,13 +24,13 @@ class RestaurantMap extends Component {
   }
 
 componentWillMount(){
-  console.log(this.props.history.location.state)
+  console.log(this.props.history.location.state.email)
   //axios get to get tables
-  //this.getTable();
+  this.getTable();
 }
 
 getTable = async () => {
-  let res = await axios.get("http://fooddinein--ready.herokuapp.com/restaurant/tables");
+  let res = await axios.get("https://fooddinein--ready.herokuapp.com/restaurant/tables/searchByEmail?email="+this.props.history.location.state.email);
   this.setState(
     {
       'data' : res.data
@@ -38,7 +38,7 @@ getTable = async () => {
   )
 };
   render() {
-    if(sessionStorage.getItem('isLoggedIn') === 'true')
+    if(this.state.data)
     {
     return (
       <div style={{ backgroundColor: "#232F34"}}>
@@ -50,16 +50,16 @@ getTable = async () => {
         <div style={{position: "relative"}} className="test">
           <h2 style={{color: '#f05e0a'}}>Restaurant 2D Map</h2>
           <img src={resimg} width="50%" alt="" />
-          {/* {console.log(this.props.history.location)} */}
-          {/* {this.props.restuarant.map(res => {
-            {console.log(this.props.res)}
-            // return(
+          {console.log(this.state.data)}
+          {this.state.data.map(res => {
+            console.log(res)
+            return(
              
-            //   <MapLegend history={this.props.history} x="550px" y="200px"/>
+              <MapLegend history={this.props.history} data={res} x={res['tableX']} y={res['tableY']}/>
               
-            // )
-          })} */}
-            <MapLegend history={this.props.history} x="550px" y="200px"/>
+            )
+          })}
+            {/* <MapLegend history={this.props.history} x="550px" y="200px"/> */}
     
         </div>
 

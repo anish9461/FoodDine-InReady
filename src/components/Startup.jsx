@@ -43,7 +43,7 @@ class Startup extends Component {
     }
     render() {
       const responseGoogle = (response) =>{
-        // console.log(response)
+        console.log(response)
         console.log("axios post")
         let userData = {
           'firstName' : response.w3.ofa,

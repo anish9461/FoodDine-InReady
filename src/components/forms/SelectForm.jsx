@@ -32,6 +32,7 @@ class SelectForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log(this.state.date)
     // const templateId = 'template_UOMxgYMC';
     // var message = 'Booking Date : \n' + this.state.date + '\n' + "Preorder";
     // this.sendFeedback(templateId, {message_html: message, from_name: 'FoodDine-InReady', reply_to: 'anish9461@gmail.com'})
@@ -111,14 +112,21 @@ class SelectForm extends Component {
   }
   componentDidMount() {
     console.log("component mount");
-    this.refs.datepicker.props.includeTimes.push(setHours(setMinutes(new Date(), 0), 15))
+    //this.refs.datepicker.props.includeTimes.push(setHours(setMinutes(new Date(), 0), 15))
+    var incTime = this.refs.datepicker.props.includeTimes
+    console.log(this.props.location.state)
     //FIXME: If props.datetime === preincluded times, then remove it from preinclude time
+    var datetime = this.props.location.state.datetime;
+    // console.log(datetime)
+    // console.log(incTime)
     // for(i in datetime array)
     // {
-    //   for(j in includetime array)
+    //   for(j in this.refs.datepicker.props.includeTimes)
     //   {
-    //     if datetime === includetime{
+    //     if i === j{
     //       remove datetime from includetime
+            //var index = this.refs.datepicker.props.includeTimes.indexOf(i)
+            //this.refs.datepicker.props.includeTimes.splice(index,1)
     //     }
     //   }
     // }  
@@ -135,6 +143,21 @@ class SelectForm extends Component {
     });
   }
   handleChange = date => {
+    var datetime = this.props.location.state.datetime;
+    console.log(typeof(datetime[0]))
+    // console.log(datetime)
+    for(let i in datetime){
+      console.log(datetime[i])
+      if(datetime[i] === date.toString()){
+        console.log("Same")
+        alert("Booking not available")
+        this.setState({
+          startDate: null
+        })
+        return
+      }
+    }
+      
     this.setState({
       startDate: date,
       date: date
@@ -160,6 +183,7 @@ class SelectForm extends Component {
             <div>
               <DatePicker
                 ref = 'datepicker'
+                value={this.state.startDate}
                 selected={this.state.startDate}
                 onChange={this.handleChange}
                 showTimeSelect
