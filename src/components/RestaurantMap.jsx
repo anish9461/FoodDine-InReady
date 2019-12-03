@@ -24,7 +24,6 @@ class RestaurantMap extends Component {
   }
 
 componentWillMount(){
-  console.log(this.props.history.location.state.email)
   //axios get to get tables
   this.getTable();
 }
@@ -50,9 +49,9 @@ getTable = async () => {
         <div style={{position: "relative"}} className="test">
           <h2 style={{color: '#f05e0a'}}>Restaurant 2D Map</h2>
           <img src={resimg} width="50%" alt="" />
-          {console.log(this.state.data)}
+     
           {this.state.data.map(res => {
-            console.log(res)
+      
             return(
              
               <MapLegend history={this.props.history} data={res} x={res['tableX']} y={res['tableY']}/>

@@ -30,11 +30,11 @@ class MapComponent extends Component {
 
 markerClick(e) {
   // send the restaurant information to the 2D map as props
-  console.log('Clicked');
-  console.log(e.target.id)
+
   ////
-  var restaurant = this.state.data.filter(res => res.name === e.target.id) 
-  console.log(restaurant[0])
+  var restaurant = this.state.data.filter(res => res.name === e.target.id)
+ 
+  sessionStorage.setItem('restaurantName',restaurant[0].name)
   this.props.history.push('/restaurant2d',restaurant[0]);
   // this.props.history.push('/restaurant2d');
 }
@@ -59,7 +59,7 @@ getRestaurants = async () => {
           alignContent: "centre"
         }}
       >
-        {console.log(this.state.data)}
+      
         {/* : map the markers on the map */}
         {this.state.data.map(data => {
         return(
