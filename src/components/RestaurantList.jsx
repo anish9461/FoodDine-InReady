@@ -29,7 +29,7 @@ componentWillMount(){
    // this.getRestaurants();
   }
   getRestaurants = async () => {
-    let res = await axios.get("http://fooddinein--ready.herokuapp.com/restaurant");
+    let res = await axios.get("https://fooddinein--ready.herokuapp.com/restaurant");
     this.setState(
       {
         'data' : res.data
