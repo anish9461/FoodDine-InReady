@@ -88,8 +88,9 @@ class MapLegend extends Component {
         //     });
         //   }}
         onClick={() => {
-          console.log('clicked')
-          //FIXME: pass the table name and details, restaurant name as props
+      
+      
+
           this.props.history.push('/selectform',this.props.data)
         }}
           style={{position: 'absolute',left: this.props.x, top: this.props.y }}

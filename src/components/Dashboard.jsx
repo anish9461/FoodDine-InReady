@@ -13,9 +13,7 @@ class Dashboard extends Component {
     this.state = {
       center: [-0.1148677, 51.5139573]
     };
-    console.log("props")
-    console.log(this.props)
-    console.log("end")
+
   }
 
   componentDidMount() {
@@ -37,7 +35,6 @@ class Dashboard extends Component {
   // }
   
   render() {
-    console.log(sessionStorage.getItem('isLoggedIn'))
     if(sessionStorage.getItem('isLoggedIn') === 'true')
     {
     return (
