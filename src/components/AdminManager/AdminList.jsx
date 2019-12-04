@@ -44,7 +44,7 @@ componentWillMount(){
     {
     return (
       
-      <div style={{ backgroundColor: "#344955", height: "100%" }}>
+      <div style={{ backgroundColor: "#344955", height: "100vh" }}>
         {console.log(this.state.data)}
         {/* <img src={bgimage} id="bg" alt="" /> */}
         <TabsComponent history={this.props.history} activeKey="adminlist"/>
