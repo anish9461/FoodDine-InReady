@@ -21,7 +21,7 @@ class AdminEdit extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    
+    alert('Restaurant Added!')
     console.log(this.state);
     Axios.post("https://fooddinein--ready.herokuapp.com/restaurant",{"email":this.state.restaurantEmail}).then((res) => {
         console.log("pass");
