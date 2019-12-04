@@ -9,6 +9,8 @@ class Restaurantorder extends Component {
   constructor(props) {
     super(props);
     this.state = { data: [] };
+    // this.sendFeedback = this.sendFeedback.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentWillMount() {
@@ -27,9 +29,42 @@ class Restaurantorder extends Component {
     this.getOrders();
   }
 
-  handleSubmit(e) {
-    console.log(e.target);
+  handleSubmit = e => {
+    console.log(e.target.id);
+    const templateId = 'template_UOMxgYMC';
+    axios.get("https://fooddinein--ready.herokuapp.com/orders/"+e.target.id).then(response =>{
+      console.log(response.data)
+      var preord = ''
+    for (var i in response.data['preorder'])
+    {
+      console.log(response.data['preorder'][i])
+      preord = preord + response.data['preorder'][i] + ', '
+    }
+    console.log(preord)
+    var book = 'Booking Date : '+ response.data['datetime'];
+    this.sendFeedback(templateId, {restaurantName: response.data['restaurantName'], date: response.data['datetime'], preorder: preord, pslot: response.data['parkingSlot'], from_name: 'FoodDine-InReady', reply_to: 'anish9461@gmail.com'})
+    })
+  
+    
+
   }
+
+  sendFeedback(templateId, variables) {
+    window.emailjs
+      .send("gmail", templateId, variables)
+      .then(res => {
+        console.log("Email successfully sent!");
+      })
+      // Handle errors here however you like, or use a React error boundary
+      .catch(err =>
+        console.error(
+          "Oh well, you failed. Here some thoughts on the error that occured:",
+          err
+        )
+      );
+  }
+
+
 
   getOrders = async () => {
     var getReq = { useremail: sessionStorage.getItem("useremail") };
@@ -58,7 +93,7 @@ class Restaurantorder extends Component {
             return(
             <div className="restaurantlist">
               <div className="restaurantlist2">
-                <h2 style={{ color: "#f05e0a" }}>Alto Cinco</h2>
+                <h2 style={{ color: "#f05e0a" }}>{data['restaurantName']}</h2>
                 <h3 style={{ color: "#f05e0a", marginRight: "10px" }}>
                   Customer :
                   <span style={{ color: "#F9AA33", marginLeft: "60px" }}>
@@ -98,7 +133,7 @@ class Restaurantorder extends Component {
                 <div className="form-align" style={{ marginTop: "10px" }}>
                   <button
                     type="submit"
-                    id="abc"
+                    id={data['id']}
                     className="button"
                     onClick={this.handleSubmit}
                     style={{ color: "white" }}
