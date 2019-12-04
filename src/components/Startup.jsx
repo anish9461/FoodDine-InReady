@@ -45,27 +45,17 @@ class Startup extends Component {
         console.log(response)
         console.log("axios post")
 
-      axios({
-        method: 'POST',
-        url: 'http://fooddinein--ready.herokuapp.com/user',
-        // headers: {}, 
-        data: {
-          'firstName' : response.w3.ofa,
-          'lastName' : response.w3.wea,
-          'email' : response.w3.U3
-        } 
-      }).then(res => {
-        console.log("response")
-        
-        console.log(res)
-      }).catch(err => {
-        console.log("error")
-        console.log(err)
-      }
-        );
-        // FIXME: Use session storage to store the user data
-        sessionStorage.setItem('isLoggedIn','true')
-        this.props.history.push('/restaurantedit',{response : response})
+        axios.get('https://fooddinein--ready.herokuapp.com/admin/searchByEmail?email='+response.w3.U3
+        ).then(getres => {
+          console.log('get response')
+          console.log(getres)
+          sessionStorage.setItem('isLoggedIn','true')
+        this.props.history.push('/adminedit',{response : response})
+        }).catch(err =>{
+          console.log('get error')
+          alert('Wrong Credentials')
+        });
+
       }
       return (
         <div>
