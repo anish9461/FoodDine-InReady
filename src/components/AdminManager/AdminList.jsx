@@ -24,7 +24,7 @@ class AdminList extends Component {
   render() {
       if(sessionStorage.getItem("isLoggedIn")==="true"){
     return (
-      <div style={{ backgroundColor: "#344955", height: "100vh" }}>
+      <div style={{ backgroundColor: "#344955", height: "100%" }}>
         {/* <img src={bgimage} id="bg" alt="" /> */}
         <TabsComponent history={this.props.history} activeKey="restaurant"/>
         <div className="restaurantlist">
