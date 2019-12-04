@@ -34,9 +34,9 @@ class SelectForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     // console.log(this.state.date)
-    // const templateId = 'template_UOMxgYMC';
-    // var message = 'Booking Date : \n' + this.state.date + '\n' + "Preorder";
-    // this.sendFeedback(templateId, {message_html: message, from_name: 'FoodDine-InReady', reply_to: 'anish9461@gmail.com'})
+  //  const templateId = 'template_UOMxgYMC';
+   // var message = 'Booking Date : ' + this.state.date ;
+  //  this.sendFeedback(templateId, {date: message, from_name: 'FoodDine-InReady', reply_to: 'anish9461@gmail.com'})
     // console.log(this.state);
 
     if (this.state.date === "") {

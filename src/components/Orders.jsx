@@ -4,11 +4,14 @@ import "../css/tab.css";
 import TabsComponent from "../components/TabsComponent";
 import "../css/dashboard.css";
 import "../css/restaurantlist.css";
+import { isThisISOWeek } from "date-fns";
 
 class Orders extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      data : []
+    };
   }
 
   componentWillMount() {
@@ -28,45 +31,60 @@ class Orders extends Component {
   }
   getOrders = async () => {
     var getReq = { 'useremail' : sessionStorage.getItem('useremail')}
-    let res = await axios.get("https://fooddinein--ready.herokuapp.com/orders",getReq);
-    console.log(res.data);
+    let res = await axios.get("https://fooddinein--ready.herokuapp.com/orders/searchByEmail?email="+sessionStorage.getItem('useremail'));
+    this.setState({
+      data : res.data
+    })
   };
   render() {
     if(sessionStorage.getItem('isLoggedIn') === 'true')
     {
     return (
       <div style={{ backgroundColor: "#344955", height: "100vh" }}>
-        {console.log("Loding")}
+        {console.log(this.state.data)}
         {/* <img src={bgimage} id="bg" alt="" /> */}
         <TabsComponent history={this.props.history} activeKey="orders" />
-        <div className="restaurantlist">
+        {this.state.data.map(data =>
+          {
+            return(
+<div className="restaurantlist">
           <div className="restaurantlist2">
-            <h2 style={{ color: "#f05e0a" }}>Alto Cinco</h2>
+            <h2 style={{ color: "#f05e0a" }}>{data['restaurantName']}</h2>
             <h3 style={{ color: "#f05e0a", marginRight: "10px" }}>
               Table :
               <span style={{ color: "#F9AA33", marginLeft: "100px" }}>
-                table 2
+                {data['tableName']}
               </span>
             </h3>
             <h3 style={{ color: "#f05e0a" }}>
               Booking Timing :
-              <span style={{ color: "#F9AA33" }}> Date and Time</span>
+              <span style={{ color: "#F9AA33" }}> {data['datetime']} </span>
             </h3>
             <h3 style={{ color: "#f05e0a" }}>
               Parking Slot :
               <span style={{ color: "#F9AA33", marginLeft: "30px" }}>
                 {" "}
-                Slot 1
+                {data['parkingSlot']}
               </span>
             </h3>
             <h3 style={{ color: "#f05e0a" }}>
               Preorder :
               <span style={{ color: "#F9AA33", marginLeft: "70px" }}>
-                List of Orders
-              </span>
+                    {data['preorder'].map(pre => {
+                      return (
+                        // console.log(pre)
+                        <span style={{marginRight : '10px'}}>
+                          {pre},
+                          </span>
+                      )
+                    })}
+                  </span>
             </h3>
           </div>
         </div>
+            )
+          })}
+        
       </div>
     );
     }
