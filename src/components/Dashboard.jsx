@@ -5,27 +5,23 @@ import TabsComponent from "../components/TabsComponent";
 import "../css/dashboard.css";
 import MapComponent from "../components/Map";
 
-
-
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       center: [-0.1148677, 51.5139573]
     };
-
   }
 
   componentDidMount() {
     // axios.get(`http://localhost:8080/cart`).then(res => {
     //   console.log(res.data);
     // });
-    
   }
 
-  componentWillMount(){
+  componentWillMount() {
     // this.getRestaurants();
-    console.log("component will mount")
+    console.log("component will mount");
   }
 
   // getRestaurants = async () => {
@@ -33,23 +29,21 @@ class Dashboard extends Component {
   //   let { data } = res.data;
   //   console.log(res.data)
   // }
-  
-  render() {
-    if(sessionStorage.getItem('isLoggedIn') === 'true')
-    {
-    return (
-      <div style={{backgroundColor: '#232F34', height: '100vh'}}>
-        {/* <img src={bgimage} id="bg" alt="" /> */}
-        <TabsComponent history={this.props.history} />
 
-        <div className="dashboard">
-          <MapComponent history={this.props.history}/>
+  render() {
+    if (sessionStorage.getItem("isLoggedIn") === "true") {
+      return (
+        <div style={{ backgroundColor: "#232F34", height: "100vh" }}>
+          {/* <img src={bgimage} id="bg" alt="" /> */}
+          <TabsComponent history={this.props.history} />
+
+          <div className="dashboard">
+            <MapComponent history={this.props.history} />
+          </div>
         </div>
-      </div>
-    );
-    }
-    else{
-      return null
+      );
+    } else {
+      return null;
     }
   }
 }

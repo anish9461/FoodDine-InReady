@@ -21,7 +21,7 @@ class SelectForm extends Component {
       defaultCheck: false,
       restaurantName: "",
       parkingSlots: ["Park slot 1", "Park slot 2", "Park slot 3"],
-      preorderMenu: ["Chicken Steak", "Veg Steak", "Pizza"],
+      preorderMenu: ["Chicken Steak", "Sushi", "Pizza"],
       parkingSlot: "",
       preorder: [],
       date: ""
@@ -34,9 +34,9 @@ class SelectForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     // console.log(this.state.date)
-  //  const templateId = 'template_UOMxgYMC';
-   // var message = 'Booking Date : ' + this.state.date ;
-  //  this.sendFeedback(templateId, {date: message, from_name: 'FoodDine-InReady', reply_to: 'anish9461@gmail.com'})
+    //  const templateId = 'template_UOMxgYMC';
+    // var message = 'Booking Date : ' + this.state.date ;
+    //  this.sendFeedback(templateId, {date: message, from_name: 'FoodDine-InReady', reply_to: 'anish9461@gmail.com'})
     // console.log(this.state);
 
     if (this.state.date === "") {
@@ -120,7 +120,6 @@ class SelectForm extends Component {
     //this.refs.datepicker.props.includeTimes.push(setHours(setMinutes(new Date(), 0), 15))
     var incTime = this.refs.datepicker.props.includeTimes;
     console.log(this.props.location.state);
-    //FIXME: If props.datetime === preincluded times, then remove it from preinclude time
     var datetime = this.props.location.state.datetime;
     // console.log(datetime)
     // console.log(incTime)
@@ -208,7 +207,7 @@ class SelectForm extends Component {
                     Choose Parking
                   </h2>
                   {this.state.parkingSlots.map(slot => (
-                    <label style={{ marginTop: "10px" }}>
+                    <label style={{ marginTop: "10px", color: "#ff1100" }}>
                       <Checkbox
                         name={slot}
                         id={slot}
@@ -223,7 +222,7 @@ class SelectForm extends Component {
                     Select Pre-Order Menu
                   </h2>
                   {this.state.preorderMenu.map(order => (
-                    <label>
+                    <label style={{ color: "#ff1100" }}>
                       <Checkbox
                         name={order}
                         id={order}
