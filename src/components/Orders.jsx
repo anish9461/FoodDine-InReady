@@ -32,7 +32,7 @@ class Orders extends Component {
   getOrders = async () => {
     var getReq = { useremail: sessionStorage.getItem("useremail") };
     let res = await axios.get(
-      "https://fooddinein--ready.herokuapp.com/orders/searchByEmail?email=" +
+      "https://fooddinein--ready.herokuapp.com/orders/searchByUserEmail?userEmail=" +
         sessionStorage.getItem("useremail")
     );
     this.setState({
