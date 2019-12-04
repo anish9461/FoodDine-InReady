@@ -24,6 +24,7 @@ class Restaurantorder extends Component {
 
   handleSubmit = e => {
     console.log(e.target.id);
+    alert('Email Notification Sent!')
     const templateId = "template_UOMxgYMC";
     axios
       .get("https://fooddinein--ready.herokuapp.com/orders/" + e.target.id)
