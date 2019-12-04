@@ -47,7 +47,7 @@ componentWillMount(){
       <div style={{ backgroundColor: "#344955", height: "100%" }}>
         {console.log(this.state.data)}
         {/* <img src={bgimage} id="bg" alt="" /> */}
-        <TabsComponent history={this.props.history} activeKey="restaurant"/>
+        <TabsComponent history={this.props.history} activeKey="adminlist"/>
 
         {/* {console.log(this.state.data)} */}
         {this.state.data.map(data => {

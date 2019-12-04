@@ -40,7 +40,7 @@ class AdminEdit extends Component {
   }
 
   componentWillMount() {
-    //TODO: fetch the current information and store that in state
+   
   }
 
   handleChange(event) {
