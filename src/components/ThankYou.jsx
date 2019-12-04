@@ -21,8 +21,8 @@ class ThankYou extends Component {
     }
   
     onclick = () =>{
-      this.props.history.push('/')
-    sessionStorage.clear();
+      this.props.history.push('/home')
+   
     }
     render() {    
       if(sessionStorage.getItem('isLoggedIn') === 'true')

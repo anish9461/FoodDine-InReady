@@ -19,6 +19,7 @@ class TabsComponent extends Component {
   clicked = tabs => {
     if (tabs === "") {
       sessionStorage.setItem("isLoggedIn", "false");
+      sessionStorage.clear();
     }
     this.props.history.push("/" + tabs);
   };
