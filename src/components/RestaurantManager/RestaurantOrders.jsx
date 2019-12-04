@@ -28,7 +28,7 @@ class Restaurantorder extends Component {
     axios
       .get("https://fooddinein--ready.herokuapp.com/orders/" + e.target.id)
       .then(response => {
-        console.log(response.data);
+        console.log(response.data['userEmail']);
         var preord = "";
         for (var i in response.data["preorder"]) {
           console.log(response.data["preorder"][i]);
@@ -37,12 +37,12 @@ class Restaurantorder extends Component {
         console.log(preord);
         var book = "Booking Date : " + response.data["datetime"];
         this.sendFeedback(templateId, {
+          reply_to: response.data['userEmail'],
           restaurantName: response.data["restaurantName"],
           date: response.data["datetime"],
           preorder: preord,
           pslot: response.data["parkingSlot"],
-          from_name: "FoodDine-InReady",
-          reply_to: response.data['userEmail']
+          from_name: "FoodDine-InReady"     
         });
       });
   };
@@ -76,7 +76,7 @@ class Restaurantorder extends Component {
   render() {
     if (sessionStorage.getItem("isLoggedIn") === "true" && this.state.data) {
       return (
-        <div style={{ backgroundColor: "#344955", height: "100vh" }}>
+        <div style={{ backgroundColor: "#344955", height: "100%" }}>
           {/* <img src={bgimage} id="bg" alt="" /> */}
           <TabsComponent
             history={this.props.history}
