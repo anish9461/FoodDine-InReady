@@ -87,7 +87,7 @@ class Restaurantorder extends Component {
             activeKey="restaurantorders"
           />
 
-          {/* FIXME: Use map and state to display all the orders */}
+         
           {this.state.data.map(data => {
             console.log(data)
             return(
