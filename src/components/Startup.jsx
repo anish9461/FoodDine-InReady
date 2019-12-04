@@ -52,6 +52,7 @@ class Startup extends Component {
           console.log('get response')
           console.log(getres)
           sessionStorage.setItem('isLoggedIn','true')
+          sessionStorage.setItem('email',response.w3.U3)
         this.props.history.push('/restaurantedit',{response : response})
         }).catch(err =>{
           console.log('get error')

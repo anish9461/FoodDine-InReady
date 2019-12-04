@@ -8,7 +8,7 @@ import "../../css/restaurantlist.css";
 class Restaurantorder extends Component {
   constructor(props) {
     super(props);
-    this.state = { data : []};
+    this.state = { data: [] };
   }
 
   componentWillMount() {
@@ -27,84 +27,93 @@ class Restaurantorder extends Component {
     this.getOrders();
   }
 
-  handleSubmit(e){
-    console.log(e.target)
+  handleSubmit(e) {
+    console.log(e.target);
   }
 
-
-
   getOrders = async () => {
-    var getReq = { 'useremail' : sessionStorage.getItem('useremail')}
-    let res = await axios.get("http://fooddinein--ready.herokuapp.com/orders");
+    var getReq = { useremail: sessionStorage.getItem("useremail") };
+    let res = await axios.get(
+      "https://fooddinein--ready.herokuapp.com/orders/searchByEmail?email=" +
+        sessionStorage.getItem("email")
+    );
     let { data } = res.data;
     this.setState({
-      data : res.data
-    })
-    // console.log(res.data);
+      data: res.data
+    });
   };
   render() {
-    {console.log((sessionStorage.getItem('isLoggedIn')))}
-    if((sessionStorage.getItem('isLoggedIn') === 'true') && this.state.data)
-    {
-      
-    return (
-      <div style={{ backgroundColor: "#344955", height: "100vh" }}>
-        
-        {console.log(this.state.data)}
-        {/* <img src={bgimage} id="bg" alt="" /> */}
-        <TabsComponent history={this.props.history} activeKey="restaurantorders" />
-        
-        {/* FIXME: Use map and state to display all the orders */}
-        <div className="restaurantlist">
-          <div className="restaurantlist2">
-            <h2 style={{ color: "#f05e0a" }}>Alto Cinco</h2>
-            <h3 style={{ color: "#f05e0a", marginRight: "10px" }}>
-              Customer :
-              <span style={{ color: "#F9AA33", marginLeft: "60px" }}>
-                Customer email
-              </span>
-            </h3>
-            <h3 style={{ color: "#f05e0a", marginRight: "10px" }}>
-              Table :
-              <span style={{ color: "#F9AA33", marginLeft: "100px" }}>
-                table 2
-              </span>
-            </h3>
-            <h3 style={{ color: "#f05e0a" }}>
-              Booking Timing :
-              <span style={{ color: "#F9AA33" }}> Date and Time</span>
-            </h3>
-            <h3 style={{ color: "#f05e0a" }}>
-              Parking Slot :
-              <span style={{ color: "#F9AA33", marginLeft: "30px" }}>
-                {" "}
-                Slot 1
-              </span>
-            </h3>
-            <h3 style={{ color: "#f05e0a" }}>
-              Preorder :
-              <span style={{ color: "#F9AA33", marginLeft: "70px" }}>
-                List of Orders
-              </span>
-            </h3>
-            <div className="form-align" style={{ marginTop: "10px" }}>
-            <button
-                  type="submit"
-                  id='abc'
-                  className="button"
-                  onClick={this.handleSubmit}
-                  style={{color: 'white'}}
-                >
-                  Confirm
-                </button>
+    if (sessionStorage.getItem("isLoggedIn") === "true" && this.state.data) {
+      return (
+        <div style={{ backgroundColor: "#344955", height: "100vh" }}>
+          {/* <img src={bgimage} id="bg" alt="" /> */}
+          <TabsComponent
+            history={this.props.history}
+            activeKey="restaurantorders"
+          />
+
+          {/* FIXME: Use map and state to display all the orders */}
+          {this.state.data.map(data => {
+            console.log(data)
+            return(
+            <div className="restaurantlist">
+              <div className="restaurantlist2">
+                <h2 style={{ color: "#f05e0a" }}>Alto Cinco</h2>
+                <h3 style={{ color: "#f05e0a", marginRight: "10px" }}>
+                  Customer :
+                  <span style={{ color: "#F9AA33", marginLeft: "60px" }}>
+                    {data['userEmail']}
+                  </span>
+                </h3>
+                <h3 style={{ color: "#f05e0a", marginRight: "10px" }}>
+                  Table :
+                  <span style={{ color: "#F9AA33", marginLeft: "100px" }}>
+                    {data['tableName']}
+                  </span>
+                </h3>
+                <h3 style={{ color: "#f05e0a" }}>
+                  Booking Timing :
+                  <span style={{ color: "#F9AA33" }}> {data['datetime']}</span>
+                </h3>
+                <h3 style={{ color: "#f05e0a" }}>
+                  Parking Slot :
+                  <span style={{ color: "#F9AA33", marginLeft: "30px" }}>
+                    {" "}
+                    {data['parkingSlot']}
+                  </span>
+                </h3>
+                <h3 style={{ color: "#f05e0a" }}>
+                  Preorder :
+                  <span style={{ color: "#F9AA33", marginLeft: "70px" }}>
+                    {data['preorder'].map(pre => {
+                      return (
+                        // console.log(pre)
+                        <span style={{marginRight : '10px'}}>
+                          {pre},
+                          </span>
+                      )
+                    })}
+                  </span>
+                </h3>
+                <div className="form-align" style={{ marginTop: "10px" }}>
+                  <button
+                    type="submit"
+                    id="abc"
+                    className="button"
+                    onClick={this.handleSubmit}
+                    style={{ color: "white" }}
+                  >
+                    Confirm
+                  </button>
                 </div>
-          </div>
+              </div>
+            </div>
+            );
+          })}
         </div>
-      </div>
-    );
-    }
-    else{
-      return null
+      );
+    } else {
+      return null;
     }
   }
 }

@@ -6,6 +6,7 @@ import TabsComponent from "../TabsComponent";
 import { Form, Input, FormGroup, Container, Label } from "reactstrap";
 import Checkbox from "rc-checkbox";
 import "rc-checkbox/assets/index.css";
+import axios from "axios";
 
 class RestaurantEdit extends Component {
   constructor(props) {
@@ -22,9 +23,20 @@ class RestaurantEdit extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    alert("Something was submitted");
+    alert("Details updated");
     console.log(this.state);
-    //FIXME: do a post request
+    var sendData = {
+      "name" : this.state.restaurantName,
+      "resAddress" : this.state.restaurantAddress,
+      "resTiming" : this.state.timing,
+      "email" : sessionStorage.getItem('email'),
+      "locationX" : this.state.locationX,
+      "locationY" : this.state.locationY,
+      "contact" : this.state.contact
+    }
+    console.log(sendData)
+    axios.put('https://fooddinein--ready.herokuapp.com/restaurant/'+this.state.id,sendData)
+
   };
 
   onChange(e) {
@@ -36,7 +48,18 @@ class RestaurantEdit extends Component {
   }
 
   componentWillMount() {
-    //TODO: fetch the current information and store that in state
+    axios.get('https://fooddinein--ready.herokuapp.com/restaurant/searchByEmail?email='+sessionStorage.getItem('email')).then(res => {
+      console.log(res.data)
+      this.setState({
+        locationX: res.data.locationX,
+        locationY: res.data.locationY,
+        id: res.data.id,
+        restaurantName: res.data.name,
+        restaurantAddress: res.data.resAddress,
+        contact: res.data.contact,
+        timing: res.data.resTiming
+      })
+    })
   }
 
   handleChange(event) {
@@ -81,7 +104,7 @@ class RestaurantEdit extends Component {
                   <input
                     type="text"
                     name="restaurantName"
-                    value={this.state.value}
+                    value={this.state.restaurantName}
                     onChange={this.handleChange}
                   />
                 </label>
@@ -93,7 +116,7 @@ class RestaurantEdit extends Component {
                   <input
                     type="text"
                     name="restaurantAddress"
-                    value={this.state.value}
+                    value={this.state.restaurantAddress}
                     onChange={this.handleChange}
                   />
                 </label>
@@ -105,7 +128,7 @@ class RestaurantEdit extends Component {
                   <input
                     type="text"
                     name="contact"
-                    value={this.state.value}
+                    value={this.state.contact}
                     onChange={this.handleChange}
                   />
                 </label>
@@ -117,7 +140,7 @@ class RestaurantEdit extends Component {
                   <input
                     type="text"
                     name="timing"
-                    value={this.state.value}
+                    value={this.state.timing}
                     onChange={this.handleChange}
                   />
                 </label>
