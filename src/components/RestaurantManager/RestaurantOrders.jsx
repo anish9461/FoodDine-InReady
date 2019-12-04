@@ -76,7 +76,7 @@ class Restaurantorder extends Component {
   render() {
     if (sessionStorage.getItem("isLoggedIn") === "true" && this.state.data) {
       return (
-        <div style={{ backgroundColor: "#344955", height: "100%" }}>
+        <div style={{ backgroundColor: "#344955", height: "100vh" }}>
           {/* <img src={bgimage} id="bg" alt="" /> */}
           <TabsComponent
             history={this.props.history}
