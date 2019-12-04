@@ -42,7 +42,7 @@ class Restaurantorder extends Component {
           preorder: preord,
           pslot: response.data["parkingSlot"],
           from_name: "FoodDine-InReady",
-          reply_to: "anish9461@gmail.com"
+          reply_to: response.data['userEmail']
         });
       });
   };
