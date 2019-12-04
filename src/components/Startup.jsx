@@ -59,7 +59,6 @@ class Startup extends Component {
         });
     
     
-        // FIXME: Use session storage to store the user data
         
       }
       return (
