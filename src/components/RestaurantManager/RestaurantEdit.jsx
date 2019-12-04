@@ -158,7 +158,7 @@ class RestaurantEdit extends Component {
                   className="button"
                   onClick={this.handleSubmit}
                 >
-                  Submit
+                  Update
                 </button>
               </div>
             </FormGroup>
