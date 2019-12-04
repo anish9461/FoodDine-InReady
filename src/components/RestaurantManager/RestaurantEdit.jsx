@@ -15,7 +15,9 @@ class RestaurantEdit extends Component {
       restaurantName: "",
       restaurantAddress: "",
       contact: "",
-      timing: ""
+      timing: "",
+      locationX: '-76.5474',
+      locationY: '43.1081'
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -58,8 +60,8 @@ class RestaurantEdit extends Component {
       .then(res => {
         console.log(res.data);
         this.setState({
-          locationX: res.data.locationX,
-          locationY: res.data.locationY,
+          // locationX: res.data.locationX,
+          // locationY: res.data.locationY,
           id: res.data.id,
           restaurantName: res.data.name,
           restaurantAddress: res.data.resAddress,
