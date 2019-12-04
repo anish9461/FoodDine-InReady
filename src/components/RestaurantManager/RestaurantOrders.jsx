@@ -10,7 +10,7 @@ class Restaurantorder extends Component {
     super(props);
     this.state = { data: [] };
     // this.sendFeedback = this.sendFeedback.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -19,35 +19,33 @@ class Restaurantorder extends Component {
   }
 
   componentDidMount() {
-    // axios.get(`http://localhost:8080/cart`).then(res => {
-    //   console.log(res.data);
-    // });
-    // let userData = {}
-    // let response = GetData('user',userData)
-    // console.log("response")
-    // console.log(response.data)
     this.getOrders();
   }
 
   handleSubmit = e => {
     console.log(e.target.id);
-    const templateId = 'template_UOMxgYMC';
-    axios.get("https://fooddinein--ready.herokuapp.com/orders/"+e.target.id).then(response =>{
-      console.log(response.data)
-      var preord = ''
-    for (var i in response.data['preorder'])
-    {
-      console.log(response.data['preorder'][i])
-      preord = preord + response.data['preorder'][i] + ', '
-    }
-    console.log(preord)
-    var book = 'Booking Date : '+ response.data['datetime'];
-    this.sendFeedback(templateId, {restaurantName: response.data['restaurantName'], date: response.data['datetime'], preorder: preord, pslot: response.data['parkingSlot'], from_name: 'FoodDine-InReady', reply_to: 'anish9461@gmail.com'})
-    })
-  
-    
-
-  }
+    const templateId = "template_UOMxgYMC";
+    axios
+      .get("https://fooddinein--ready.herokuapp.com/orders/" + e.target.id)
+      .then(response => {
+        console.log(response.data);
+        var preord = "";
+        for (var i in response.data["preorder"]) {
+          console.log(response.data["preorder"][i]);
+          preord = preord + response.data["preorder"][i] + ", ";
+        }
+        console.log(preord);
+        var book = "Booking Date : " + response.data["datetime"];
+        this.sendFeedback(templateId, {
+          restaurantName: response.data["restaurantName"],
+          date: response.data["datetime"],
+          preorder: preord,
+          pslot: response.data["parkingSlot"],
+          from_name: "FoodDine-InReady",
+          reply_to: "anish9461@gmail.com"
+        });
+      });
+  };
 
   sendFeedback(templateId, variables) {
     window.emailjs
@@ -63,8 +61,6 @@ class Restaurantorder extends Component {
         )
       );
   }
-
-
 
   getOrders = async () => {
     var getReq = { useremail: sessionStorage.getItem("useremail") };
@@ -87,62 +83,62 @@ class Restaurantorder extends Component {
             activeKey="restaurantorders"
           />
 
-         
           {this.state.data.map(data => {
-            console.log(data)
-            return(
-            <div className="restaurantlist">
-              <div className="restaurantlist2">
-                <h2 style={{ color: "#f05e0a" }}>{data['restaurantName']}</h2>
-                <h3 style={{ color: "#f05e0a", marginRight: "10px" }}>
-                  Customer :
-                  <span style={{ color: "#F9AA33", marginLeft: "60px" }}>
-                    {data['userEmail']}
-                  </span>
-                </h3>
-                <h3 style={{ color: "#f05e0a", marginRight: "10px" }}>
-                  Table :
-                  <span style={{ color: "#F9AA33", marginLeft: "100px" }}>
-                    {data['tableName']}
-                  </span>
-                </h3>
-                <h3 style={{ color: "#f05e0a" }}>
-                  Booking Timing :
-                  <span style={{ color: "#F9AA33" }}> {data['datetime']}</span>
-                </h3>
-                <h3 style={{ color: "#f05e0a" }}>
-                  Parking Slot :
-                  <span style={{ color: "#F9AA33", marginLeft: "30px" }}>
-                    {" "}
-                    {data['parkingSlot']}
-                  </span>
-                </h3>
-                <h3 style={{ color: "#f05e0a" }}>
-                  Preorder :
-                  <span style={{ color: "#F9AA33", marginLeft: "70px" }}>
-                    {data['preorder'].map(pre => {
-                      return (
-                        // console.log(pre)
-                        <span style={{marginRight : '10px'}}>
-                          {pre},
-                          </span>
-                      )
-                    })}
-                  </span>
-                </h3>
-                <div className="form-align" style={{ marginTop: "10px" }}>
-                  <button
-                    type="submit"
-                    id={data['id']}
-                    className="button"
-                    onClick={this.handleSubmit}
-                    style={{ color: "white" }}
-                  >
-                    Confirm
-                  </button>
+            console.log(data);
+            return (
+              <div className="restaurantlist">
+                <div className="restaurantlist2">
+                  <h2 style={{ color: "#f05e0a" }}>{data["restaurantName"]}</h2>
+                  <h3 style={{ color: "#f05e0a", marginRight: "10px" }}>
+                    Customer :
+                    <span style={{ color: "#F9AA33", marginLeft: "60px" }}>
+                      {data["userEmail"]}
+                    </span>
+                  </h3>
+                  <h3 style={{ color: "#f05e0a", marginRight: "10px" }}>
+                    Table :
+                    <span style={{ color: "#F9AA33", marginLeft: "100px" }}>
+                      {data["tableName"]}
+                    </span>
+                  </h3>
+                  <h3 style={{ color: "#f05e0a" }}>
+                    Booking Timing :
+                    <span style={{ color: "#F9AA33" }}>
+                      {" "}
+                      {data["datetime"]}
+                    </span>
+                  </h3>
+                  <h3 style={{ color: "#f05e0a" }}>
+                    Parking Slot :
+                    <span style={{ color: "#F9AA33", marginLeft: "30px" }}>
+                      {" "}
+                      {data["parkingSlot"]}
+                    </span>
+                  </h3>
+                  <h3 style={{ color: "#f05e0a" }}>
+                    Preorder :
+                    <span style={{ color: "#F9AA33", marginLeft: "70px" }}>
+                      {data["preorder"].map(pre => {
+                        return (
+                          // console.log(pre)
+                          <span style={{ marginRight: "10px" }}>{pre},</span>
+                        );
+                      })}
+                    </span>
+                  </h3>
+                  <div className="form-align" style={{ marginTop: "10px" }}>
+                    <button
+                      type="submit"
+                      id={data["id"]}
+                      className="button"
+                      onClick={this.handleSubmit}
+                      style={{ color: "white" }}
+                    >
+                      Confirm
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
             );
           })}
         </div>

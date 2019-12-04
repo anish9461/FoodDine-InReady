@@ -26,17 +26,19 @@ class RestaurantEdit extends Component {
     alert("Details updated");
     console.log(this.state);
     var sendData = {
-      "name" : this.state.restaurantName,
-      "resAddress" : this.state.restaurantAddress,
-      "resTiming" : this.state.timing,
-      "email" : sessionStorage.getItem('email'),
-      "locationX" : this.state.locationX,
-      "locationY" : this.state.locationY,
-      "contact" : this.state.contact
-    }
-    console.log(sendData)
-    axios.put('https://fooddinein--ready.herokuapp.com/restaurant/'+this.state.id,sendData)
-
+      name: this.state.restaurantName,
+      resAddress: this.state.restaurantAddress,
+      resTiming: this.state.timing,
+      email: sessionStorage.getItem("email"),
+      locationX: this.state.locationX,
+      locationY: this.state.locationY,
+      contact: this.state.contact
+    };
+    console.log(sendData);
+    axios.put(
+      "https://fooddinein--ready.herokuapp.com/restaurant/" + this.state.id,
+      sendData
+    );
   };
 
   onChange(e) {
@@ -48,18 +50,23 @@ class RestaurantEdit extends Component {
   }
 
   componentWillMount() {
-    axios.get('https://fooddinein--ready.herokuapp.com/restaurant/searchByEmail?email='+sessionStorage.getItem('email')).then(res => {
-      console.log(res.data)
-      this.setState({
-        locationX: res.data.locationX,
-        locationY: res.data.locationY,
-        id: res.data.id,
-        restaurantName: res.data.name,
-        restaurantAddress: res.data.resAddress,
-        contact: res.data.contact,
-        timing: res.data.resTiming
-      })
-    })
+    axios
+      .get(
+        "https://fooddinein--ready.herokuapp.com/restaurant/searchByEmail?email=" +
+          sessionStorage.getItem("email")
+      )
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          locationX: res.data.locationX,
+          locationY: res.data.locationY,
+          id: res.data.id,
+          restaurantName: res.data.name,
+          restaurantAddress: res.data.resAddress,
+          contact: res.data.contact,
+          timing: res.data.resTiming
+        });
+      });
   }
 
   handleChange(event) {

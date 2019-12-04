@@ -6,33 +6,27 @@ import "../css/dashboard.css";
 import MapComponent from "../components/Map";
 import bgimage from "../images/restaurant-1.jpg";
 
-
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       center: [-0.1148677, 51.5139573]
     };
-    console.log("props")
-    console.log(this.props)
-    console.log("end")
+    console.log("props");
+    console.log(this.props);
+    console.log("end");
   }
 
-  componentDidMount() {
-    // axios.get(`http://localhost:8080/cart`).then(res => {
-    //   console.log(res.data);
-    // });
-    
-  }
+  componentDidMount() {}
 
   render() {
     return (
-      <div style={{backgroundColor: '#232F34', height: '100vh'}}>
+      <div style={{ backgroundColor: "#232F34", height: "100vh" }}>
         {/* <img src={bgimage} id="bg" alt="" /> */}
         <TabsComponent history={this.props.history} />
 
         <div className="dashboard">
-          <MapComponent history={this.props.history}/>
+          <MapComponent history={this.props.history} />
         </div>
       </div>
     );

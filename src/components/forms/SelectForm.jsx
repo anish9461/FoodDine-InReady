@@ -7,7 +7,6 @@ import { Form, Input, FormGroup, Container, Label } from "reactstrap";
 import Checkbox from "rc-checkbox";
 import "rc-checkbox/assets/index.css";
 
-
 class SelectForm extends Component {
   constructor(props) {
     super(props);
