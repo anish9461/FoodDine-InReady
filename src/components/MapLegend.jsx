@@ -46,6 +46,7 @@ class MapLegend extends Component {
       //     this.refs.totip.innerHTML += `${y[x].attrDisplayName} : ${y[x].value}<br>`;
       //   }
       // }
+     
       this.refs.totip.innerHTML = '';
       this.refs.totip.innerHTML += "<span style='color: red;'>Capacity:</span><br>";
       this.refs.totip.innerHTML += `<span style='color: black;'>4</span><br><br>`;
@@ -93,9 +94,8 @@ class MapLegend extends Component {
 
           this.props.history.push('/selectform',this.props.data)
         }}
-          style={{position: 'absolute',left: this.props.x, top: this.props.y }}
+          style={{position: 'absolute',left: this.props.x, top: this.props.y, cursor: 'pointer' }}
         >
-            {console.log(this.props)}
           <span ref="totip" id="tooltiptext" />
           {renderSensor}
         </div>

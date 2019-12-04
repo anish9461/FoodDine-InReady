@@ -47,7 +47,8 @@ getTable = async () => {
 
         {/* <img src={resimg} className="restaurantbg" alt="" /> */}
         <div style={{position: "relative"}} className="test">
-          <h2 style={{color: '#f05e0a'}}>Restaurant 2D Map</h2>
+          
+          <h2 style={{color: '#f05e0a'}}>{sessionStorage.getItem('restaurantName')}</h2>
           <img src={resimg} width="50%" alt="" />
      
           {this.state.data.map(res => {
