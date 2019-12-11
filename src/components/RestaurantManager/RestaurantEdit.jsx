@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import DatePicker from "react-datepicker";
 import "../../css/selectform.css";
 import "react-datepicker/dist/react-datepicker.css";
 import TabsComponent from "../TabsComponent";
 import { Form, Input, FormGroup, Container, Label } from "reactstrap";
-import Checkbox from "rc-checkbox";
 import "rc-checkbox/assets/index.css";
 import axios from "axios";
 
@@ -60,8 +58,8 @@ class RestaurantEdit extends Component {
       .then(res => {
         console.log(res.data);
         this.setState({
-          // locationX: res.data.locationX,
-          // locationY: res.data.locationY,
+          locationX: res.data.locationX,
+          locationY: res.data.locationY,
           id: res.data.id,
           restaurantName: res.data.name,
           restaurantAddress: res.data.resAddress,
