@@ -1,20 +1,20 @@
+//////////////////////////////////////////////////////////////////////////
+// TabsComponent.jsx - To navigate between the tabs on the application  //
+// ver 1.0                                                              //
+// Language:    Javascript, React Framework                             //
+// FoodDine-InReady , CSE 687 - Object Oriented Design, Fall2019        //
+// Source Author:      Anish Nesarkar,Suket Singh, Syracuse University  //
+//////////////////////////////////////////////////////////////////////////
+
 import React, { Component } from "react";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import axios from "axios";
 import "../css/tab.css";
 
+//Tabs component to switch between tabs
 class TabsComponent extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    //console.log(this.props)
-    // axios.get(`http://localhost:8080/cart`).then(res => {
-    //   console.log(res.data);
-    // });
-  }
+  componentDidMount() {}
 
   clicked = tabs => {
     if (tabs === "") {
@@ -23,6 +23,7 @@ class TabsComponent extends Component {
     this.props.history.push("/" + tabs);
   };
 
+  //Render the component on page load
   render() {
     let button;
     if (sessionStorage.getItem("isLoggedIn")) {
@@ -44,7 +45,11 @@ class TabsComponent extends Component {
             title="Add Restaurant"
             tabClassName="tab"
           ></Tab>
-          <Tab eventKey="adminlist" title="Restaurant List" tabClassName="tab"></Tab>
+          <Tab
+            eventKey="adminlist"
+            title="Restaurant List"
+            tabClassName="tab"
+          ></Tab>
           {button}
         </Tabs>
       </div>
