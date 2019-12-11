@@ -2,15 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
-import App from './App';
-import RestaurantList from './components/RestaurantList';
-import Test from './axiostest';
-import Dashboard from './components/Dashboard';
 import * as serviceWorker from './serviceWorker';
-import bgimage from "./images/restaurant-1.jpg"
-import RestaurantMap from './components/RestaurantMap';
 import Startup from './components/Startup';
-import SelectForm from './components/forms/SelectForm';
 import RestuarantEdit from './components/RestaurantManager/RestaurantEdit';
 import RestaurantOrders from './components/RestaurantManager/RestaurantOrders';
 
