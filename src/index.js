@@ -1,3 +1,11 @@
+//////////////////////////////////////////////////////////////////////////
+// index.js - To create routes for all the pages                        //
+// ver 1.0                                                              //
+// Language:    Javascript, React Framework                             //
+// FoodDine-InReady , CSE 687 - Object Oriented Design, Fall2019        //
+// Source Author:      Anish Nesarkar,Suket Singh, Syracuse University  //
+//////////////////////////////////////////////////////////////////////////
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';

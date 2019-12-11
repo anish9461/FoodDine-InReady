@@ -1,3 +1,11 @@
+//////////////////////////////////////////////////////////////////////////
+// RestaurantEdit.jsx - To edit and update the restaurant details       //
+// ver 1.0                                                              //
+// Language:    Javascript, React Framework                             //
+// FoodDine-InReady , CSE 687 - Object Oriented Design, Fall2019        //
+// Source Author:      Anish Nesarkar,Suket Singh, Syracuse University  //
+//////////////////////////////////////////////////////////////////////////
+
 import React, { Component } from "react";
 import "../../css/selectform.css";
 import "react-datepicker/dist/react-datepicker.css";
