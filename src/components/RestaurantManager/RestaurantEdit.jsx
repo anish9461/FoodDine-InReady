@@ -154,6 +154,31 @@ class RestaurantEdit extends Component {
                   />
                 </label>
               </div>
+
+              <div className="form-align" style={{ marginTop: "40px" }}>
+                <label style={{ marginTop: "10px", color: "#f05e0a" }}>
+                  LocationX : &nbsp;
+                  <input
+                    type="text"
+                    name="locationX"
+                    value={this.state.locationX}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </div>
+
+              <div className="form-align" style={{ marginTop: "40px" }}>
+                <label style={{ marginTop: "10px", color: "#f05e0a" }}>
+                  LocationY : &nbsp;
+                  <input
+                    type="text"
+                    name="locationY"
+                    value={this.state.locationY}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </div>
+
               <div className="form-align" style={{ marginTop: "40px" }}>
                 <button
                   type="submit"
