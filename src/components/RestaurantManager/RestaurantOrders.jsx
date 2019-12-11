@@ -5,14 +5,15 @@ import TabsComponent from "../TabsComponent";
 import "../../css/dashboard.css";
 import "../../css/restaurantlist.css";
 
+//Restaurant order class to display the existing orders
 class Restaurantorder extends Component {
   constructor(props) {
     super(props);
     this.state = { data: [] };
-    // this.sendFeedback = this.sendFeedback.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  //Component called before rendering
   componentWillMount() {
     this.getOrders();
     console.log("component will mount");
@@ -22,14 +23,15 @@ class Restaurantorder extends Component {
     this.getOrders();
   }
 
+  //Send the cofirmation mail to the client
   handleSubmit = e => {
     console.log(e.target.id);
-    alert('Email Notification Sent!')
+    alert("Email Notification Sent!");
     const templateId = "template_UOMxgYMC";
     axios
       .get("https://fooddinein--ready.herokuapp.com/orders/" + e.target.id)
       .then(response => {
-        console.log(response.data['userEmail']);
+        console.log(response.data["userEmail"]);
         var preord = "";
         for (var i in response.data["preorder"]) {
           console.log(response.data["preorder"][i]);
@@ -38,16 +40,17 @@ class Restaurantorder extends Component {
         console.log(preord);
         var book = "Booking Date : " + response.data["datetime"];
         this.sendFeedback(templateId, {
-          reply_to: response.data['userEmail'],
+          reply_to: response.data["userEmail"],
           restaurantName: response.data["restaurantName"],
           date: response.data["datetime"],
           preorder: preord,
           pslot: response.data["parkingSlot"],
-          from_name: "FoodDine-InReady"     
+          from_name: "FoodDine-InReady"
         });
       });
   };
 
+  //Send email notification via emailjs library
   sendFeedback(templateId, variables) {
     window.emailjs
       .send("gmail", templateId, variables)
@@ -63,6 +66,7 @@ class Restaurantorder extends Component {
       );
   }
 
+  //Get all the orders for the restaurant
   getOrders = async () => {
     var getReq = { useremail: sessionStorage.getItem("useremail") };
     let res = await axios.get(
@@ -74,11 +78,12 @@ class Restaurantorder extends Component {
       data: res.data
     });
   };
+
+  //Render the restaurant orders component
   render() {
     if (sessionStorage.getItem("isLoggedIn") === "true" && this.state.data) {
       return (
         <div style={{ backgroundColor: "#344955", height: "100vh" }}>
-          {/* <img src={bgimage} id="bg" alt="" /> */}
           <TabsComponent
             history={this.props.history}
             activeKey="restaurantorders"
@@ -121,7 +126,6 @@ class Restaurantorder extends Component {
                     <span style={{ color: "#F9AA33", marginLeft: "70px" }}>
                       {data["preorder"].map(pre => {
                         return (
-                          // console.log(pre)
                           <span style={{ marginRight: "10px" }}>{pre},</span>
                         );
                       })}
@@ -150,4 +154,5 @@ class Restaurantorder extends Component {
   }
 }
 
+//Export the component to be used in the index page
 export default Restaurantorder;

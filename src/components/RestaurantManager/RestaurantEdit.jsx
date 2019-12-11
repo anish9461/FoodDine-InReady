@@ -6,9 +6,11 @@ import { Form, Input, FormGroup, Container, Label } from "reactstrap";
 import "rc-checkbox/assets/index.css";
 import axios from "axios";
 
+//Restaurant edit react class to edit the restaurant details
 class RestaurantEdit extends Component {
   constructor(props) {
     super(props);
+    //state variables for the restaurant class
     this.state = {
       restaurantName: "",
       restaurantAddress: "",
@@ -17,10 +19,12 @@ class RestaurantEdit extends Component {
       locationX: '-76.5474',
       locationY: '43.1081'
     };
+    //functions to handle change in data and submit the data
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  //function to submit the edited restaurant details
   handleSubmit = e => {
     e.preventDefault();
     alert("Details updated");
@@ -35,6 +39,7 @@ class RestaurantEdit extends Component {
       contact: this.state.contact
     };
     console.log(sendData);
+    //send the data via axios class
     axios.put(
       "https://fooddinein--ready.herokuapp.com/restaurant/" + this.state.id,
       sendData
@@ -69,8 +74,8 @@ class RestaurantEdit extends Component {
       });
   }
 
+  //Change the value of the state on form change
   handleChange(event) {
-    console.log();
     switch (event.target.name) {
       case "restaurantName": {
         console.log("restaurant Name");
@@ -92,9 +97,20 @@ class RestaurantEdit extends Component {
         this.setState({ timing: event.target.value });
         break;
       }
+      case "locationX": {
+        console.log("restaurant locationX");
+        this.setState({ locationX: event.target.value });
+        break;
+      }
+      case "locationY": {
+        console.log("restaurant locationY");
+        this.setState({ locationY: event.target.value });
+        break;
+      }
     }
   }
 
+  //Render the restaurant form component with tabs and necessary fields
   render() {
     return (
       <div style={{ backgroundColor: "#344955", height: "100vh" }}>
@@ -194,4 +210,5 @@ class RestaurantEdit extends Component {
   }
 }
 
+//Export the component to be used to index page
 export default RestaurantEdit;
