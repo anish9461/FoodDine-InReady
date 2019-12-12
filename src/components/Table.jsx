@@ -1,3 +1,11 @@
+//////////////////////////////////////////////////////////////////////////
+// Table.jsx - Table svg coded in react component                       //
+// ver 1.0                                                              //
+// Language:    Javascript, React Framework                             //
+// FoodDine-InReady , CSE 687 - Object Oriented Design, Fall2019        //
+// Source Author:      Anish Nesarkar,Suket Singh, Syracuse University  //
+//////////////////////////////////////////////////////////////////////////
+
 import React, { Component } from "react";
 
 export default class Table extends Component {

@@ -1,3 +1,11 @@
+//////////////////////////////////////////////////////////////////////////
+// RestaurantList.jsx - Component to display the list of restaurants    //
+// ver 1.0                                                              //
+// Language:    Javascript, React Framework                             //
+// FoodDine-InReady , CSE 687 - Object Oriented Design, Fall2019        //
+// Source Author:      Anish Nesarkar,Suket Singh, Syracuse University  //
+//////////////////////////////////////////////////////////////////////////
+
 import React, { Component } from "react";
 import axios from "axios";
 import "../css/tab.css";
@@ -5,6 +13,7 @@ import TabsComponent from "../components/TabsComponent";
 import "../css/dashboard.css";
 import "../css/restaurantlist.css";
 
+//class to render the restaurant list
 class RestaurantList extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +27,7 @@ class RestaurantList extends Component {
     console.log("component will mount");
   }
 
-  componentDidMount() {}
+  //fetch the restaurants from the database
   getRestaurants = async () => {
     let res = await axios.get(
       "https://fooddinein--ready.herokuapp.com/restaurant"
@@ -27,15 +36,13 @@ class RestaurantList extends Component {
       data: res.data
     });
   };
+
+  //render the component
   render() {
     if (sessionStorage.getItem("isLoggedIn") === "true") {
       return (
         <div style={{ backgroundColor: "#344955", height: "100vh" }}>
-          {console.log(this.state.data)}
-          {/* <img src={bgimage} id="bg" alt="" /> */}
           <TabsComponent history={this.props.history} activeKey="restaurant" />
-
-          {/* {console.log(this.state.data)} */}
           {this.state.data.map(data => {
             return (
               <div className="restaurantlist">

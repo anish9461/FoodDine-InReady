@@ -1,10 +1,18 @@
+//////////////////////////////////////////////////////////////////////////
+// Dashboard.jsx - A google view map page to select the restaurant      //
+// ver 1.0                                                              //
+// Language:    Javascript, React Framework                             //
+// FoodDine-InReady , CSE 687 - Object Oriented Design, Fall2019        //
+// Source Author:      Anish Nesarkar,Suket Singh, Syracuse University  //
+//////////////////////////////////////////////////////////////////////////
+
 import React, { Component } from "react";
-import axios from "axios";
 import "../css/tab.css";
 import TabsComponent from "../components/TabsComponent";
 import "../css/dashboard.css";
 import MapComponent from "../components/Map";
 
+//Landing page after login for the user
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -13,28 +21,12 @@ class Dashboard extends Component {
     };
   }
 
-  componentDidMount() {
-    // axios.get(`http://localhost:8080/cart`).then(res => {
-    //   console.log(res.data);
-    // });
-  }
-
-  componentWillMount() {
-    // this.getRestaurants();
-    console.log("component will mount");
-  }
-
-  // getRestaurants = async () => {
-  //   let res = await axios.get("http://fooddinein--ready.herokuapp.com/restaurants");
-  //   let { data } = res.data;
-  //   console.log(res.data)
-  // }
-
+ 
+//Render the dashboard page
   render() {
     if (sessionStorage.getItem("isLoggedIn") === "true") {
       return (
         <div style={{ backgroundColor: "#232F34", height: "100vh" }}>
-          {/* <img src={bgimage} id="bg" alt="" /> */}
           <TabsComponent history={this.props.history} />
 
           <div className="dashboard">

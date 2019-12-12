@@ -1,13 +1,23 @@
+//////////////////////////////////////////////////////////////////////////
+// Map.jsx - Component to display the restaurants on the google map     //
+// ver 1.0                                                              //
+// Language:    Javascript, React Framework                             //
+// FoodDine-InReady , CSE 687 - Object Oriented Design, Fall2019        //
+// Source Author:      Anish Nesarkar,Suket Singh, Syracuse University  //
+//////////////////////////////////////////////////////////////////////////
+
 import React, { Component } from "react";
 import ReactMapboxGl, { Marker } from "react-mapbox-gl";
 import mapmarker from "../marker.svg";
 import axios from "axios";
 
+//Access token from the MapboxGl API
 const Map = ReactMapboxGl({
   accessToken:
     "pk.eyJ1IjoiYW5pc2hua3IiLCJhIjoiY2szY2dyN2pxMG1hdDNvcGJ6Nm40eDhnbyJ9.hDogBTynjbFQ_K4y7AcaFg"
 });
 
+//map component class
 class MapComponent extends Component {
   constructor(props) {
     super(props);
@@ -17,27 +27,21 @@ class MapComponent extends Component {
     };
   }
 
-  componentDidMount() {
-    // axios.get(`http://localhost:8080/cart`).then(res => {
-    //   console.log(res.data);
-    // });
-  }
-
+  //this function is executed before rendering the component
   componentWillMount() {
     this.getRestaurants();
     console.log("component will mount");
   }
 
+  // send the restaurant information to the 2D map as props on Marker click
   markerClick(e) {
-    // send the restaurant information to the 2D map as props
-
-    ////
     var restaurant = this.state.data.filter(res => res.name === e.target.id);
-
     sessionStorage.setItem("restaurantName", restaurant[0].name);
     this.props.history.push("/restaurant2d", restaurant[0]);
     // this.props.history.push('/restaurant2d');
   }
+
+  //fetch the restaurants from the database
   getRestaurants = async () => {
     let res = await axios.get(
       "https://fooddinein--ready.herokuapp.com/restaurant"
@@ -47,6 +51,7 @@ class MapComponent extends Component {
     });
   };
 
+  //render the component
   render() {
     if (this.state.data) {
       return (
@@ -78,9 +83,6 @@ class MapComponent extends Component {
               </Marker>
             );
           })}
-          {/* <Marker style={{cursor : 'pointer'}} coordinates={[-76.1474, 43.0481]} anchor="bottom" onClick={this.markerClick}>
-          <img src={mapmarker} height="40" width="40" alt="" />
-        </Marker> */}
         </Map>
       );
     } else {

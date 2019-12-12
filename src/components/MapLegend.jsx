@@ -1,12 +1,19 @@
+//////////////////////////////////////////////////////////////////////////
+// MapLegend.jsx - Component to display the tables on the 2D map        //
+// ver 1.0                                                              //
+// Language:    Javascript, React Framework                             //
+// FoodDine-InReady , CSE 687 - Object Oriented Design, Fall2019        //
+// Source Author:      Anish Nesarkar,Suket Singh, Syracuse University  //
+//////////////////////////////////////////////////////////////////////////
+
 import Table from "../components/Table";
 import React, { Component } from "react";
 import "../css/map.css";
 
+//class of the component
 class MapLegend extends Component {
   constructor(props) {
-    // props.sensor is a Sensor.js
     super(props);
-    // console.log(`'The props: ${JSON.stringify(props)}`);
     this.state = {
       isToggle: this.props.isToggle,
       sensor: this.props.sensor
@@ -21,6 +28,7 @@ class MapLegend extends Component {
 
   componentDidMount = () => {};
 
+  //display table details on mouse hover
   onhover = () => {
     this.refs.totip.innerHTML = "";
     this.refs.totip.innerHTML +=
@@ -36,14 +44,11 @@ class MapLegend extends Component {
     this.refs.totip.style.opacity = "0";
   };
 
+  //Render the tables on the 2D map
   render = () => {
     let renderSensor;
     if (this.props) {
       if (this.props !== "") {
-        //   const location = JSON.parse(this.props.sensor.location);
-        //   var x_axis = location.mapPlots.x;
-        //   var y_axis = location.mapPlots.y;
-
         renderSensor = React.createElement(Table, null, null);
       } else {
         return null;
@@ -55,13 +60,6 @@ class MapLegend extends Component {
       <div
         onMouseOver={this.onhover}
         onMouseOut={() => this.mouseout()}
-        //   onClick={() => {
-        //     // console.log(`the sensor from bmap to detail? ${JSON.stringify(this.state.sensor)}`);
-        //     this.props.history.push({
-        //       pathname: `/admin/sensor/${this.state.sensor.getDeviceId()}`,
-        //       state: this.state.sensor.rawSensor
-        //     });
-        //   }}
         onClick={() => {
           this.props.history.push("/selectform", this.props.data);
         }}

@@ -1,11 +1,19 @@
+//////////////////////////////////////////////////////////////////////////
+// Orders.jsx - Component to display the restaurant Orders              //
+// ver 1.0                                                              //
+// Language:    Javascript, React Framework                             //
+// FoodDine-InReady , CSE 687 - Object Oriented Design, Fall2019        //
+// Source Author:      Anish Nesarkar,Suket Singh, Syracuse University  //
+//////////////////////////////////////////////////////////////////////////
+
 import React, { Component } from "react";
 import axios from "axios";
 import "../css/tab.css";
 import TabsComponent from "../components/TabsComponent";
 import "../css/dashboard.css";
 import "../css/restaurantlist.css";
-import { isThisISOWeek } from "date-fns";
 
+//Orders class component
 class Orders extends Component {
   constructor(props) {
     super(props);
@@ -14,21 +22,17 @@ class Orders extends Component {
     };
   }
 
+  //Execute this before rendering the component
   componentWillMount() {
     this.getOrders();
     console.log("component will mount");
   }
 
   componentDidMount() {
-    // axios.get(`http://localhost:8080/cart`).then(res => {
-    //   console.log(res.data);
-    // });
-    // let userData = {}
-    // let response = GetData('user',userData)
-    // console.log("response")
-    // console.log(response.data)
     this.getOrders();
   }
+
+  //Fetch the orders from the database
   getOrders = async () => {
     var getReq = { useremail: sessionStorage.getItem("useremail") };
     let res = await axios.get(
@@ -39,12 +43,12 @@ class Orders extends Component {
       data: res.data
     });
   };
+  //render the component
   render() {
     if (sessionStorage.getItem("isLoggedIn") === "true") {
       return (
         <div style={{ backgroundColor: "#344955", height: "100vh" }}>
           {console.log(this.state.data)}
-          {/* <img src={bgimage} id="bg" alt="" /> */}
           <TabsComponent history={this.props.history} activeKey="orders" />
           {this.state.data.map(data => {
             return (
@@ -76,7 +80,6 @@ class Orders extends Component {
                     <span style={{ color: "#F9AA33", marginLeft: "70px" }}>
                       {data["preorder"].map(pre => {
                         return (
-                          // console.log(pre)
                           <span style={{ marginRight: "10px" }}>{pre},</span>
                         );
                       })}

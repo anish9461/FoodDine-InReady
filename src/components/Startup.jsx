@@ -1,41 +1,30 @@
+//////////////////////////////////////////////////////////////////////////
+// Startup.jsx - Login page for the application                         //
+// ver 1.0                                                              //
+// Language:    Javascript, React Framework                             //
+// FoodDine-InReady , CSE 687 - Object Oriented Design, Fall2019        //
+// Source Author:      Anish Nesarkar,Suket Singh, Syracuse University  //
+//////////////////////////////////////////////////////////////////////////
+
 import React, { Component } from "react";
 import "../css/dashboard.css";
 import bgimage from "../images/restaurant-1.jpg";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "../css/background.css";
 import GoogleLogin from "react-google-login";
-import axios from "axios";
 import { PostData } from "../services/PostData";
 
+//Load a startup page for login
 class Startup extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      center: [-0.1148677, 51.5139573]
-    };
+    this.state = {};
   }
 
-  componentDidMount() {
-    // axios.get(`https://fooddinein--ready.herokuapp.com/user`).then(res => {
-    //   console.log(res.data);
-    // });
-    // console.log("axios post")
-    // axios({
-    //   method: 'POST',
-    //   url: 'http://fooddinein--ready.herokuapp.com/user',
-    //   // headers: {},
-    //   data: {
-    //     'firstName' : response.w3.ig
-    //   }
-    // }).then(res => {
-    //   console.log(res)
-    // });
-  }
+  componentDidMount() {}
 
-  onclick = () => {
-    this.props.history.push("/home");
-  };
+  //Render the component
   render() {
+    //Response from google after signing in
     const responseGoogle = response => {
       console.log(response);
       console.log("axios post");
@@ -58,7 +47,7 @@ class Startup extends Component {
 
         <div className="bg-text">
           <h1 style={{ fontSize: "50px" }}>FoodDine-InReady</h1>
-          {/* <a onClick={this.onclick} href='home' className="button4" style={{backgroundColor:'#f14e4e', fontSize:'25px'}}>Click!</a> */}
+
           <GoogleLogin
             clientId="1040424542196-n7gajpjirdqcm10grpbk0kmvk8eav9ki.apps.googleusercontent.com"
             onSuccess={responseGoogle}

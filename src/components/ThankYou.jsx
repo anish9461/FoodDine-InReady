@@ -1,11 +1,19 @@
+//////////////////////////////////////////////////////////////////////////
+// ThankYou.jsx - Component to display the exit page of the application //
+// ver 1.0                                                              //
+// Language:    Javascript, React Framework                             //
+// FoodDine-InReady , CSE 687 - Object Oriented Design, Fall2019        //
+// Source Author:      Anish Nesarkar,Suket Singh, Syracuse University  //
+//////////////////////////////////////////////////////////////////////////
+
 import React, { Component } from "react";
 import "../css/dashboard.css";
 import bgimage from "../images/restaurant-1.jpg";
 import "../css/background.css";
-import axios from "axios";
 import ReactTimeout from "react-timeout";
 import Spinner from "react-spinner-material";
 
+//class component
 class ThankYou extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +25,6 @@ class ThankYou extends Component {
 
   componentDidMount() {
     this.props.setTimeout(this.onclick, 5000);
-    // this.onclick();
   }
 
   onclick = () => {
@@ -41,7 +48,6 @@ class ThankYou extends Component {
                 spinnerWidth={8}
                 visible={true}
               />
-              {/* <a onClick={this.onclick} href='home' className="button4" style={{backgroundColor:'#f14e4e', fontSize:'25px'}}>Click!</a> */}
             </div>
           </div>
         </div>
