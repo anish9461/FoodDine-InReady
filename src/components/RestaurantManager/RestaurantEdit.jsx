@@ -24,9 +24,9 @@ class RestaurantEdit extends Component {
       restaurantAddress: "",
       contact: "",
       timing: "",
-      locationX: '-76.5474',
-      locationY: '43.1081'
-    };
+      locationX: "",
+      locationY: ""
+    }
     //functions to handle change in data and submit the data
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
