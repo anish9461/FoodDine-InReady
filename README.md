@@ -1,68 +1,35 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Food-Dine-In-Ready
+A graduate object oriented design project
 
-## Available Scripts
+## App Idea
+The app FoodDine-inReady is very different than all the leading food-industry apps available in the market because as of now, each and every app on the market is just focusing on delivery. But our Web-App, focuses on the dine-in aspect of the food sector and provides the user with an elevated experience by cutting down on their wait time, as well as exertion by providing multiple features such as, finding and reserving available parking space near the venue. The vision of our app is to provide customers with the same peace of mind in dine-in as they experience in a delivery based scenario, thus working towards 100% customer satisfaction. The App also provides a Map view of the inside of the restaurant which makes it stand out among other such apps.
 
-In the project directory, you can run:
+The target audience for this app is not limited to any age-group. Everyone from a high school student to an old couple can utilize this app equally and benefit the same. However considering the scope of the project, and its online nature, we believe that the majority of the user base will comprise of Millenials as that is the most tech-savvy sector from the user-base.
 
-### `yarn start`
+## Project Overview
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Project Timeline
+The project was divided into four phases to track the progress of the project at each phase.
+![Project Timeline](/public/powerpointSlides/timeline.PNG)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Technology Stacks
+The following trending technology stacks were used for the complete project.
+![Technology Stacks](/public/powerpointSlides/stacks.PNG)
 
-### `yarn test`
+### Front-end
+The front-end react application is deployed on GitHub with three branches mainly master(User), restaurant manager and admin.
+![Front-end React Application](/public/powerpointSlides/front_end.PNG)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Database
+MongoDB database is used in this project as it is a NoSql database that can store data in JSON format
+![Database](/public/powerpointSlides/database.PNG)
 
-### `yarn build`
+### Back-end
+The backend SpringBoot Application has been developed using spring boot and eclipse and has been deployed using GitHub and Heroku.
+![Back-end SpringBoot Application](/public/powerpointSlides/back_end.PNG)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Dev-Ops
+The front-end react and back-end Springboot is continuously integrated and continuously deployed on aws amplify and heroku respectively.
+![AWS Amplify](/public/powerpointSlides/aws_amplify.PNG)
+![Heroku](/public/powerpointSlides/heroku.PNG) 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
