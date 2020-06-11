@@ -28,11 +28,17 @@ class Startup extends Component {
     const responseGoogle = response => {
       console.log(response);
       console.log("axios post");
+      // let userData = {
+      //   firstName: response.w3.ofa,
+      //   lastName: response.w3.wea,
+      //   email: response.w3.U3
+      // };
+
       let userData = {
-        firstName: response.w3.ofa,
-        lastName: response.w3.wea,
-        email: response.w3.U3
-      };
+        'firstName' : response.profileObj.givenName,
+        'lastName' : response.profileObj.familyName,
+        'email' : response.profileObj.email
+      } 
       PostData("user", userData);
 
       sessionStorage.setItem("isLoggedIn", "true");
