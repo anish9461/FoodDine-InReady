@@ -36,7 +36,7 @@ class Startup extends Component {
       axios
         .get(
           "https://fooddinein--ready.herokuapp.com/restaurant/searchByEmail?email=" +
-            response.w3.U3
+            response.profileObj.email
         )
         .then(getres => {
           console.log("get response");
